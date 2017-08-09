@@ -7,17 +7,27 @@ import { Http } from '@angular/http';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
-  username = "";
-  password = "";
-  missing_details:boolean = false;
-  duplicate_username:boolean = false;
-  wrong_details:boolean = true;
 
   @Input () btn_actn;
 
-  constructor(private http:Http) { }
+  username:string;
+  password:string;
+  missing_details:boolean;
+  duplicate_username:boolean;
+  wrong_details:boolean;
+
+  constructor(private http:Http) {
+    this.reset();
+  }
 
   ngOnInit() {
+  }
+
+  reset(){
+    this.password = "";
+    this.missing_details = false;
+    this.duplicate_username = false;
+    this.wrong_details = false;
   }
 
   btnAction(){
@@ -32,7 +42,10 @@ export class AuthComponent implements OnInit {
 
   join(){
     let response_code;
-    this.http.post('http://localhost:5000/api/V1/auth/register', {})
+    let body = new FormData();
+    body.append('username', this.username);
+    body.append('password', this.password);
+    this.http.post('http://localhost:5000/api/V1/auth/register', body)
       .subscribe(data => this.authenticate(data), err => this.authenticate(err));
 
 
@@ -43,6 +56,16 @@ export class AuthComponent implements OnInit {
 
   authenticate(response){
     let response_code = JSON.parse(JSON.stringify(response)).status;
+
+    if (response_code == 409){
+      this.reset();
+      this.duplicate_username = true;
+    }
+    if (response_code == 400 || response_code == 401){
+      this.reset();
+      this.missing_details = true;
+
+    }
 
   }
 }
