@@ -10,7 +10,7 @@ input{
   margin-bottom: 3vh;
   width: 15vw;
   height: 6vh;
-  border: 0px;
+  border-width: 0px;
   border-radius: 3px;
   font-size: 2.2vh;
   text-align: center;

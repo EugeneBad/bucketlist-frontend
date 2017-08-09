@@ -7,23 +7,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   btn_actn:string;
-  join_form:boolean = true;
-  login_form:boolean = true;
-  
+  show_signup_form:boolean
+  show_login_form:boolean
+  show_signup_btn:boolean
+  show_login_btn:boolean
 
   constructor() {
+    this.reset();
   }
 
   ngOnInit() {
   }
+
+reset(){
+  this.show_signup_form = false;
+  this.show_login_form= false;
+  this.show_signup_btn= true;
+  this.show_login_btn= true;
+}
+
   joinForm(){
+    this.reset();
     this.btn_actn = 'JOIN';
-    this.join_form = false;
+    this.show_signup_btn = false;
+    this.show_signup_form = true;
+
   }
 
   loginForm(){
+    this.reset();
     this.btn_actn = 'LOGIN';
-    this.login_form = false;
+    this.show_login_btn= false;
+    this.show_login_form = true;
   }
 
 }

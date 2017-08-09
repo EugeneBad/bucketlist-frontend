@@ -2,23 +2,22 @@
   <div class="col-md-12">
     <h1>BUCKETLISTS</h1>
   </div>
-
 </div>
 
 <div class="row">
-  <div (click)="joinForm()" id="sign" class="col-md-3 col-md-push-3">
-    <div>
-      <img src="assets/images/signup.png"/>
-    </div>
-    <app-auth [hidden]="join_form" [btn_actn]="btn_actn" ></app-auth>
+  <div id="sign" class="col-md-3 col-md-push-3">
+
+    <button *ngIf="show_signup_btn" (click)="joinForm()" class="btn" style="background-image: url('/assets/images/signup.png')"></button>
+
+    <app-auth *ngIf="show_signup_form" [btn_actn]="btn_actn"></app-auth>
 
   </div>
 
-  <div (click)="loginForm()" id="login" class="col-md-3 col-md-push-3">
-    <div>
-      <img src="assets/images/login.png"/>
-    </div>
-    <app-auth [hidden]="login_form" [btn_actn]="btn_actn" ></app-auth>
+  <div id="login" class="col-md-3 col-md-push-3">
+
+    <button *ngIf="show_login_btn" (click)="loginForm()" class="btn" style="background-image: url('/assets/images/login.png')"></button>
+
+    <app-auth *ngIf="show_login_form" [btn_actn]="btn_actn"></app-auth>
 
   </div>
 
