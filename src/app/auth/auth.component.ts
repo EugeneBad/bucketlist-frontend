@@ -64,8 +64,8 @@ export class AuthComponent implements OnInit {
     if (response_code == 400 || response_code == 401){
       this.reset();
       this.missing_details = true;
-
     }
+    
 
   }
 }

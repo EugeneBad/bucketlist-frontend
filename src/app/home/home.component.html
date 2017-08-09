@@ -7,11 +7,17 @@
 
 <div class="row">
   <div (click)="joinForm()" id="sign" class="col-md-3 col-md-push-3">
+    <div>
+      <img src="assets/images/signup.png"/>
+    </div>
     <app-auth [hidden]="join_form" [btn_actn]="btn_actn" ></app-auth>
 
   </div>
 
   <div (click)="loginForm()" id="login" class="col-md-3 col-md-push-3">
+    <div>
+      <img src="assets/images/login.png"/>
+    </div>
     <app-auth [hidden]="login_form" [btn_actn]="btn_actn" ></app-auth>
 
   </div>
