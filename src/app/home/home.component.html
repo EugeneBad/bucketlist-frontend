@@ -6,14 +6,13 @@
 </div>
 
 <div class="row">
-  <div id="sign" class="col-md-3 col-md-push-3">
-    <app-auth></app-auth>
-    <button class="btn">JOIN</button>
+  <div (click)="joinForm()" id="sign" class="col-md-3 col-md-push-3">
+    <app-auth [hidden]="join_form" [btn_actn]="btn_actn" ></app-auth>
+
   </div>
 
-  <div id="login" class="col-md-3 col-md-push-3">
-    <app-auth></app-auth>
-    <button class="btn">LOGIN</button>
+  <div (click)="loginForm()" id="login" class="col-md-3 col-md-push-3">
+    <app-auth [hidden]="login_form" [btn_actn]="btn_actn" ></app-auth>
 
   </div>
 

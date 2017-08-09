@@ -1,5 +1,5 @@
 #credentials{
-  margin-top: 12vh;
+  margin-top: 10vh;
 }
 
 input{
@@ -10,4 +10,12 @@ input{
   border-radius: 3px;
   font-size: 2.2vh;
   text-align: center;
+}
+
+button{
+  font-weight: bold;
+  background-color: red;
+  width: 15vw;
+  box-shadow: 2px 0px 3px;
+
 }
