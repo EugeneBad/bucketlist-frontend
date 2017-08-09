@@ -9,6 +9,10 @@ import { Http } from '@angular/http';
 export class AuthComponent implements OnInit {
   username = "";
   password = "";
+  missing_details:boolean = false;
+  duplicate_username:boolean = false;
+  wrong_details:boolean = true;
+
   @Input () btn_actn;
 
   constructor(private http:Http) { }

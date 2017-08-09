@@ -1,9 +1,13 @@
-#credentials{
-  margin-top: 10vh;
+#username{
+  margin-top: 7vh;
+}
+
+#password{
+  margin-top: 3.5vh;
 }
 
 input{
-  margin-bottom: 7vh;
+  margin-bottom: 3vh;
   width: 15vw;
   height: 6vh;
   border: 0px;
@@ -13,9 +17,17 @@ input{
 }
 
 button{
+  margin-top: 3vh;
   font-weight: bold;
   background-color: red;
   width: 15vw;
   box-shadow: 2px 0px 3px;
+
+}
+
+span{
+  width: 12vw;
+  font-size: 1.7vh;
+  margin-left: 0.2vw;
 
 }
