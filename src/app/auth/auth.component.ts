@@ -51,6 +51,13 @@ export class AuthComponent implements OnInit {
 
   }
   login(){
+    let response_code;
+    let body = new FormData();
+    body.append('username', this.username);
+    body.append('password', this.password);
+    this.http.post('http://localhost:5000/api/V1/auth/login', body)
+      .subscribe(data => this.authenticate(data), err => this.authenticate(err));
+
 
   }
 
@@ -65,7 +72,10 @@ export class AuthComponent implements OnInit {
       this.reset();
       this.missing_details = true;
     }
-    
+    if (response_code == 401){
+      this.reset();
+      this.wrong_details = true;
+    }
 
   }
 }
