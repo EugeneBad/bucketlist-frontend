@@ -26,5 +26,19 @@ span{
   background-color: white;
   height: 80vh;
   box-shadow: -2px -2px 3px;
+}
 
+h1{
+  text-align: center;
+  font-family: Helvetica;
+  font-size: 7vh;
+}
+
+#bucketlist{
+  display: inline-block;
+  width: 30vh;
+  height: 45vh;
+  background-color: black;
+  margin-left: 2vw;
+  margin-top: 7vh;
 }
