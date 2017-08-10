@@ -1,0 +1,17 @@
+#search_box{
+  display: inline;
+  margin-left: 25vw;
+  width: 22vw;
+}
+#logout_btn{
+  margin-left: 13vw;
+}
+
+nav{
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+#new_bcktlst_btn{
+  margin-left: 3vw;
+}
