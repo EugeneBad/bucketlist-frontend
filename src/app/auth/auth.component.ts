@@ -58,7 +58,6 @@ export class AuthComponent implements OnInit {
     this.http.post('http://localhost:5000/api/V1/auth/login', body)
       .subscribe(data => this.authenticate(data), err => this.authenticate(err));
 
-
   }
 
   authenticate(response){
