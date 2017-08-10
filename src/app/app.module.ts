@@ -9,6 +9,10 @@ import { AuthComponent } from './auth/auth.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 
+const appRoutes:Routes = [
+  { path: 'home', component: HomeComponent },
+  {path: '', component:DashboardComponent},
+]
 
 @NgModule({
   declarations: [
@@ -18,7 +22,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     DashboardComponent
   ],
   imports: [
-
+    RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
     HttpModule,
