@@ -17,6 +17,14 @@ nav{
 }
 
 span{
-  font-size: 2.6vh;
+  font-size: 2.2vh;
   margin-left: 8vw;
+}
+
+.col-md-12{
+  opacity: 0.6;
+  background-color: white;
+  height: 80vh;
+  box-shadow: -2px -2px 3px;
+
 }
