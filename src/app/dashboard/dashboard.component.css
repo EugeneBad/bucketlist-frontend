@@ -1,10 +1,10 @@
 #search_box{
   display: inline;
-  margin-left: 25vw;
+  margin-left: 10vw;
   width: 22vw;
 }
 #logout_btn{
-  margin-left: 13vw;
+  margin-left: 4vw;
 }
 
 nav{
@@ -13,5 +13,10 @@ nav{
 }
 
 #new_bcktlst_btn{
-  margin-left: 3vw;
+  margin-left: 6vw;
+}
+
+span{
+  font-size: 2.6vh;
+  margin-left: 8vw;
 }
