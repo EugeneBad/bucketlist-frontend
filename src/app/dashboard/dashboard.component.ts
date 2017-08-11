@@ -7,14 +7,14 @@ import { Http, Headers } from '@angular/http';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  token:string;
-  bucketlists:any;
-  offset:number = 1;
-  q:string = '';
+  token: string;
+  bucketlists: any;
+  offset: number = 1;
+  q: string = '';
 
 
   constructor(private http: Http, private route: ActivatedRoute) {
-    this.route.queryParams.subscribe(params => { this.token = params['token']; this.getBucketlists()});
+    this.route.queryParams.subscribe(params => { this.token = params['token']; this.getBucketlists() });
 
   }
 
@@ -22,17 +22,17 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  getBucketlists(){
+  getBucketlists() {
 
     let headers = new Headers();
     headers.append('token', this.token);
 
-    this.http.get(`http://localhost:5000/api/V1/bucketlists?limit=4&offset=${this.offset}&q=${this.q}`, {headers:headers})
-    .subscribe(data => {this.bucketlists = JSON.parse(JSON.parse(JSON.stringify(data))._body).Bucketlists})
+    this.http.get(`http://localhost:5000/api/V1/bucketlists?limit=4&offset=${this.offset}&q=${this.q}`, { headers: headers })
+      .subscribe(data => { this.bucketlists = JSON.parse(JSON.parse(JSON.stringify(data))._body).Bucketlists })
 
   }
 
-  search(eventData:any){
+  search(eventData: any) {
     this.q = eventData.target.value;
     this.getBucketlists();
 
