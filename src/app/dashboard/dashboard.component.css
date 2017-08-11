@@ -82,9 +82,12 @@ h1{
 }
 
 #next_btn{
-  margin-left: 2vw;
+position: fixed;
+left: 51vw;
+
 }
 
 #prev_btn{
-  margin-left: 35vw;
+position: fixed;
+left: 44vw;
 }
