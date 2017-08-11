@@ -28,7 +28,7 @@ export class DashboardComponent implements OnInit {
     headers.append('token', this.token);
 
     this.http.get(`http://localhost:5000/api/V1/bucketlists?offset=${this.offset}&q=${this.q}`, {headers:headers})
-    .subscribe(data => {this.bucketlists = JSON.parse(JSON.parse(JSON.stringify(data))._body).Bucketlists;})
+    .subscribe(data => {this.bucketlists = JSON.parse(JSON.parse(JSON.stringify(data))._body).Bucketlists})
 
   }
 

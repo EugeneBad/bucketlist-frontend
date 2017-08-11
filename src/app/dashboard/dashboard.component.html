@@ -11,26 +11,37 @@
   <div class="col-md-12">
     <h1>Bucketlists</h1>
     <hr>
-    <div id="bucketlist">
-      <div>
-        <h2>Visit Cities In Europe</h2>
-      </div>
 
-      <div id="creation_date">
-        <h4>Created: 12/Nov/17</h4>
-      </div>
+    <div *ngIf="bucketlists.length == 0">
+      <h2 style="text-align:center; color: red; margin-top:15vh">
+        There is nothing here!
+      </h2>
+    </div>
 
-      <div>
-        <button id="item_btn">Items<span id="label_span" class="badge">45</span>
+    <div *ngIf="bucketlists.length > 0">
+
+
+      <div id="bucketlist" *ngFor="let bucketlist of bucketlists">
+        <div>
+          <h2>{{ bucketlist.name }}</h2>
+        </div>
+
+        <div id="creation_date">
+          <h4>Created: {{ bucketlist.date_created  | date:longDate }}</h4>
+        </div>
+
+        <div>
+          <button id="item_btn">Items<span id="label_span" class="badge">{{ bucketlist.items.length }}</span>
         </button>
 
+        </div>
+
+        <div id="modified_date">
+
+          <h4>Last modified: {{ bucketlist.date_modified | date:longDate }}</h4>
+        </div>
+
       </div>
-
-      <div id="modified_date">
-
-        <h4>Last modified: 12/Nov/17</h4>
-      </div>
-
     </div>
 
   </div>

@@ -22,6 +22,7 @@ nav{
 }
 
 #label_span{
+  margin-top: -0.7vh;
   font-size: 1.8vh;
   margin-left: 2.3vw;
 }
@@ -52,12 +53,12 @@ h1{
 
 #creation_date{
   margin-top: 6vh;
-  margin-left: 1vw;
+  margin-left: 0.5vw;
 }
 
 #modified_date{
   margin-top: 7vh;
-  margin-left: 1vw;
+  margin-left: 0.3vw;
 }
 
 #item_btn{
