@@ -43,8 +43,8 @@
 
       </div>
     </div>
-    <button id="prev_btn" class="btn">Prev</button>
-    <button id="next_btn" class="btn">Next</button>
+    <button *ngIf="response.has_prev" id="prev_btn" class="btn">Prev</button>
+    <button *ngIf="response.has_next" id="next_btn" class="btn">Next</button>
 
   </div>
 
