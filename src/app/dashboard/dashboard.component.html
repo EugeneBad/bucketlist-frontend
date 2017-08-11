@@ -31,7 +31,7 @@
         </div>
 
         <div>
-          <button id="item_btn">Items<span id="label_span" class="badge">{{ bucketlist.items.length }}</span>
+          <button id="item_btn">Items<span id="label_span" class="badge">{{ bucketlist.items }}</span>
         </button>
 
         </div>
@@ -44,10 +44,9 @@
       </div>
     </div>
 
+    <button *ngIf="response.has_prev" id="prev_btn" class="btn" (click)="prev()">Prev</button>
 
-    <button *ngIf="response.has_prev" id="prev_btn" class="btn">Prev</button>
-
-    <button *ngIf="response.has_next" id="next_btn" class="btn">Next</button>
+    <button *ngIf="response.has_next" id="next_btn" class="btn" (click)="next()">Next</button>
 
   </div>
 

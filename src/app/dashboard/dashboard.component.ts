@@ -16,11 +16,9 @@ export class DashboardComponent implements OnInit {
 
   constructor(private http: Http, private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => { this.token = params['token']; this.getBucketlists() });
-
   }
 
   ngOnInit() {
-
   }
 
   getBucketlists() {
@@ -32,12 +30,21 @@ export class DashboardComponent implements OnInit {
       .subscribe(data => { this.response = JSON.parse(JSON.parse(JSON.stringify(data))._body);
                            this.bucketlists = this.response.Bucketlists
                          });
-
   }
 
   search(eventData: any) {
     this.q = eventData.target.value;
     this.getBucketlists();
-
   }
+
+  next(){
+    this.offset += 1;
+    this.getBucketlists();
+  }
+
+  prev(){
+    this.offset -= 1;
+    this.getBucketlists();
+  }
+
 }
