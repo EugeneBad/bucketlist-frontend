@@ -80,9 +80,10 @@ export class AuthComponent implements OnInit {
     }
 
     if (response_code == 200 || response_code == 201){
-      console.log(JSON.parse(response._body).auth_token);
+      let token = JSON.parse(response._body).auth_token;
+      // console.log(token);
 
-      // this.router.navigate(['/']);
+      this.router.navigate(['/'], {queryParams: {token: token}});
     }
 
   }
