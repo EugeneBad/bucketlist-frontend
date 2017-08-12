@@ -1,5 +1,4 @@
 <nav class="navbar navbar-default">
-
   <button id="new_bcktlst_btn" class="btn btn-info navbar-btn">
     Add new bucketlist
     <b style="margin-left: 1vh;" class="caret"></b>
@@ -11,12 +10,16 @@
 </nav>
 
 <div id="new_bcktlst_div" hidden="true">
-  <input id="new_bcktlst_name" class="form-control" placeholder="Bucketlist Name..." maxlength="20"/>
-  <span *ngIf="missing_name" class="alert alert-danger">Check username and password</span>
-  <span *ngIf="duplicate_name" class="alert alert-danger">Check username and password</span>
-  <span *ngIf="successful_add" class="alert alert-success">Check username and password</span>
+  <input id="new_bcktlst_name" class="form-control" placeholder="Bucketlist Name..." maxlength="20" [(ngModel)]="new_bucketlist"/>
 
-  <button id="new_bcktlst_submit" class="btn btn-success">Add</button>
+  <div id="bucketlist_validation" style="text-align: center;">
+  <span *ngIf="missing_bcktlst_name" class="alert alert-danger">New Bucketlist Name Missing</span>
+  <span *ngIf="duplicate_bcktlst_name" class="alert alert-danger">Bucketlist Name Already Exists</span>
+  <span *ngIf="successful_bcktlst_add" class="alert alert-success">New Bucketlist Added!</span>
+  </div>
+
+    <button id="new_bcktlst_submit" class="btn btn-success" (click)="add()">Add</button>
+
 </div>
 
 <div class="row">
@@ -60,7 +63,5 @@
     <button *ngIf="response.has_next" id="next_btn" class="btn" (click)="next()">Next</button>
 
   </div>
-
-
 
 </div>

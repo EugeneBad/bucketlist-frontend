@@ -43,7 +43,7 @@ export class AuthComponent implements OnInit {
   }
 
   join(){
-    let response_code;
+    let response_code; //Redudant
     let body = new FormData();
     body.append('username', this.username);
     body.append('password', this.password);
@@ -53,7 +53,7 @@ export class AuthComponent implements OnInit {
 
   }
   login(){
-    let response_code;
+    let response_code; //Redundant
     let body = new FormData();
     body.append('username', this.username);
     body.append('password', this.password);
