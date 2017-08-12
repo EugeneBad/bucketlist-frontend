@@ -11,7 +11,7 @@
 </nav>
 
 <div id="new_bcktlst_div" hidden="true">
-  <input id="new_bcktlst_name" class="form-control" placeholder="Bucketlist Name..." />
+  <input id="new_bcktlst_name" class="form-control" placeholder="Bucketlist Name..." maxlength="20"/>
   <button id="new_bcktlst_submit" class="btn btn-success">Add</button>
 </div>
 
@@ -19,7 +19,6 @@
   <div class="col-md-12">
     <h1>Bucketlists</h1>
     <hr>
-
     <div *ngIf="bucketlists.length == 0">
       <h2 style="text-align:center; color: red; margin-top:15vh">
         There is nothing here!
