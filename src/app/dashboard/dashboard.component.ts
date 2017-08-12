@@ -95,6 +95,7 @@ export class DashboardComponent implements OnInit {
       this.reset();
       this.successful_bcktlst_add = true;
       this.new_bucketlist = '';
+      this.getBucketlists();
       let self = this;
       setTimeout(function(){self.successful_bcktlst_add = false;}, 2000);
     }
