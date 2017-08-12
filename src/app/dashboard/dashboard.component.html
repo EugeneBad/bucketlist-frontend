@@ -1,11 +1,18 @@
 <nav class="navbar navbar-default">
 
-  <button id="new_bcktlst_btn" class="btn btn-info navbar-btn">Add new bucketlist</button>
+  <button id="new_bcktlst_btn" class="btn btn-info navbar-btn">
+    Add new bucketlist
+    <b style="margin-left: 1vh;" class="caret"></b>
+  </button>
   <input (keyup)="search($event)" id="search_box" type="text" class="form-control" placeholder="Look for bucketlist..">
   <span id="greeting_span">Welcome username!</span>
   <button id="logout_btn" class="btn btn-danger navbar-btn">Logout</button>
 
 </nav>
+
+<div style="position: fixed; top: 45px; left: 180px; height: 38px; width: 272px; background-color: black; z-index: 1;">
+<input />
+</div>
 
 <div class="row">
   <div class="col-md-12">
@@ -23,7 +30,7 @@
 
       <div id="bucketlist" *ngFor="let bucketlist of bucketlists">
         <div>
-          <h2>{{ bucketlist.name }}</h2>
+          <h2>Visit Cities In Europe</h2>
         </div>
 
         <div id="creation_date">
