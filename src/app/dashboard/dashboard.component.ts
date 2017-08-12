@@ -12,6 +12,9 @@ export class DashboardComponent implements OnInit {
   bucketlists: any;
   offset: number = 1;
   q: string = '';
+  missing_name:boolean;
+  duplicate_name:boolean;
+  successful_add:boolean;
 
 
   constructor(private http: Http, private route: ActivatedRoute) {
@@ -46,5 +49,19 @@ export class DashboardComponent implements OnInit {
     this.offset -= 1;
     this.getBucketlists();
   }
+
+reset(){
+  this.missing_name = false;
+  this.duplicate_name = false;
+  this.successful_add = false;
+}
+
+add_bucketlist(){
+  
+}
+
+
+
+
 
 }
