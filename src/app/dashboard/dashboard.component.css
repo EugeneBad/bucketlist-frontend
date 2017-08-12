@@ -16,6 +16,32 @@ nav{
   margin-left: 6vw;
 }
 
+#new_bcktlst_div{
+  position: fixed;
+  top: 45px;
+  left: 185px;
+  width: 272px;
+  background-color: darkgrey;
+  z-index: 1;
+  border-radius: 4px;
+}
+
+#new_bcktlst_name{
+  margin-left: 1.1vw;
+  margin-top: 0.4vw;
+  width: 240px;
+}
+
+#new_bcktlst_submit{
+  margin-bottom: 0.4vw;
+  margin-top: 0.4vw;
+  margin-left: 14.1vw;
+}
+
+
+
+
+
 #greeting_span{
   font-size: 2.2vh;
   margin-left: 8vw;
