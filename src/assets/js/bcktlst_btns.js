@@ -5,7 +5,7 @@ $(document).ready(function() {
   });
 
   $('.item_btn').click(function(data) {
-    console.log(data);
+    console.log(data.type);
   });
 
 });
