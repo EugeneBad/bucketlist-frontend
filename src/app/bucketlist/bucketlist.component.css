@@ -19,3 +19,9 @@
   border-radius: 3px;
   border-width: thin;
 }
+
+.label_span{
+  margin-top: -0.7vh;
+  font-size: 1.8vh;
+  margin-left: 3.0vw;
+}
