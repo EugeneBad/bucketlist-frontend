@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthComponent } from './auth/auth.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DatePipe } from '@angular/common';
+import { ItemsComponent } from './items/items.component';
 
 const appRoutes:Routes = [
   { path: 'home', component: HomeComponent },
@@ -19,7 +20,8 @@ const appRoutes:Routes = [
     AppComponent,
     HomeComponent,
     AuthComponent,
-    DashboardComponent
+    DashboardComponent,
+    ItemsComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
