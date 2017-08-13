@@ -33,7 +33,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     let head = document.getElementsByTagName('head')[0];
     let script = document.createElement('script');
-    script.src = 'assets/js/new_bcktlst.js';
+    script.src = 'assets/js/bcktlst_btns.js';
     head.appendChild(script);
   }
 
