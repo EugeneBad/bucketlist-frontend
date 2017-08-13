@@ -45,19 +45,19 @@
           <h2>{{ bucketlist.name | uppercase }}</h2>
         </div>
 
-        <div id="creation_date">
+        <div class="creation_date">
           <h4>Created: {{ bucketlist.date_created  | date:longDate }}</h4>
         </div>
 
         <div>
-          <button id="item_btn">
+          <button class="item_btn">
             Items
-            <span id="label_span" class="badge">{{ bucketlist.items }}</span>
+            <span class="label_span" class="badge">{{ bucketlist.items }}</span>
           </button>
 
         </div>
 
-        <div id="modified_date">
+        <div class="modified_date">
 
           <h4>Last modified: {{ bucketlist.date_modified | date:longDate }}</h4>
         </div>
