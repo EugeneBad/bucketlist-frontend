@@ -3,22 +3,27 @@
     Add new bucketlist
     <b style="margin-left: 1vh;" class="caret"></b>
   </button>
-  <input (keyup)="search($event)" id="search_box" type="text" class="form-control" placeholder="Look for bucketlist..">
+
+  <input (keyup)="search($event)" id="search_box" type="text" class="form-control" placeholder="Look for bucketlist.." />
+
   <span id="greeting_span">Welcome username!</span>
-  <button id="logout_btn" class="btn btn-danger navbar-btn">Logout</button>
+
+  <button id="logout_btn" class="btn btn-danger navbar-btn">
+  Logout
+  </button>
 
 </nav>
 
 <div id="new_bcktlst_div" hidden="true">
-  <input id="new_bcktlst_name" class="form-control" placeholder="Bucketlist Name..." maxlength="20" [(ngModel)]="new_bucketlist"/>
+  <input id="new_bcktlst_name" class="form-control" placeholder="Bucketlist Name..." maxlength="20" [(ngModel)]="new_bucketlist" />
 
   <div id="bucketlist_validation" style="text-align: center;">
-  <span *ngIf="missing_bcktlst_name" class="alert alert-danger">New Bucketlist Name Missing</span>
-  <span *ngIf="duplicate_bcktlst_name" class="alert alert-danger">Bucketlist Name Already Exists</span>
-  <span *ngIf="successful_bcktlst_add" class="alert alert-success">New Bucketlist Added!</span>
+    <span *ngIf="missing_bcktlst_name" class="alert alert-danger">New Bucketlist Name Missing</span>
+    <span *ngIf="duplicate_bcktlst_name" class="alert alert-danger">Bucketlist Name Already Exists</span>
+    <span *ngIf="successful_bcktlst_add" class="alert alert-success">New Bucketlist Added!</span>
   </div>
 
-    <button id="new_bcktlst_submit" class="btn btn-success" (click)="add()">Add</button>
+  <button id="new_bcktlst_submit" class="btn btn-success" (click)="add()">Add</button>
 
 </div>
 
@@ -45,8 +50,10 @@
         </div>
 
         <div>
-          <button id="item_btn">Items<span id="label_span" class="badge">{{ bucketlist.items }}</span>
-        </button>
+          <button id="item_btn">
+            Items
+            <span id="label_span" class="badge">{{ bucketlist.items }}</span>
+          </button>
 
         </div>
 
@@ -58,10 +65,13 @@
       </div>
     </div>
 
-    <button *ngIf="response.has_prev" id="prev_btn" class="btn" (click)="prev()">Prev</button>
+    <button *ngIf="response.has_prev" id="prev_btn" class="btn" (click)="prev()">
+      Prev
+    </button>
 
-    <button *ngIf="response.has_next" id="next_btn" class="btn" (click)="next()">Next</button>
+    <button *ngIf="response.has_next" id="next_btn" class="btn" (click)="next()">
+      Next
+    </button>
 
   </div>
-
 </div>
