@@ -1,3 +1,20 @@
-<p>
-  bucketlist works!
-</p>
+<div>
+  <h2>{{ bucketlist.name | uppercase }}</h2>
+</div>
+
+<div class="creation_date">
+  <h4>Created: {{ bucketlist.date_created  | date:longDate }}</h4>
+</div>
+
+<div>
+  <button class="item_btn">
+    Items
+    <span class="label_span" class="badge">{{ bucketlist.items }}</span>
+  </button>
+
+</div>
+
+<div class="modified_date">
+
+  <h4>Last modified: {{ bucketlist.date_modified | date:longDate }}</h4>
+</div>

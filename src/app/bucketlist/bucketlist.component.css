@@ -1,0 +1,21 @@
+.creation_date{
+  margin-top: 6vh;
+  margin-left: 0.5vw;
+}
+
+.modified_date{
+  margin-top: 7vh;
+  margin-left: 0.3vw;
+}
+
+.item_btn{
+  margin-top: 5vh;
+  width:10vw;
+  height:4vh;
+  font-size: 2.3vh;
+  color: black;
+  text-align: justify;
+  font-weight: bold;
+  border-radius: 3px;
+  border-width: thin;
+}
