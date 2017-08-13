@@ -61,7 +61,9 @@
 
           <h4>Last modified: {{ bucketlist.date_modified | date:longDate }}</h4>
         </div>
-
+        <script>
+        $('.item_btn').click(function(data) {console.log(data.target);});
+        </script>
       </div>
     </div>
 
