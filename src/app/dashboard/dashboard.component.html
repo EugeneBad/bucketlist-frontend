@@ -39,12 +39,12 @@
 
     <div *ngIf="bucketlists.length > 0">
 
-
       <div id="bucketlist" *ngFor="let bucketlist of bucketlists">
 
         <app-bucketlist [bucketlist]="bucketlist"></app-bucketlist>
 
       </div>
+
     </div>
 
     <button *ngIf="response.has_prev" id="prev_btn" class="btn" (click)="prev()">

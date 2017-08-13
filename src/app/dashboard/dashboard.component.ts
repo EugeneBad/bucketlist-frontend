@@ -55,6 +55,7 @@ export class DashboardComponent implements OnInit {
   }
 
   search(eventData: any) {
+    this.offset = 1;
     this.q = eventData.target.value;
     this.getBucketlists();
   }
