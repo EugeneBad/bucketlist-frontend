@@ -14,7 +14,7 @@ import { LoggedInGuard } from './logged-in.guard';
 
 const appRoutes:Routes = [
   { path: 'home', component: HomeComponent },
-  {path: '', component:DashboardComponent},
+  {path: 'dashboard', component:DashboardComponent},
 ]
 
 @NgModule({
