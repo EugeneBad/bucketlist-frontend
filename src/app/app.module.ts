@@ -11,10 +11,14 @@ import { DatePipe } from '@angular/common';
 import { ItemsComponent } from './items/items.component';
 import { BucketlistComponent } from './bucketlist/bucketlist.component';
 import { LoggedInGuard } from './logged-in.guard';
+import { GetBucketlistsService } from './get-bucketlists.service';
 
-const appRoutes:Routes = [
+const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
-  {path: 'dashboard', component:DashboardComponent},
+  {
+    path: 'dashboard',
+    component: DashboardComponent
+  },
 ]
 
 @NgModule({
@@ -32,7 +36,7 @@ const appRoutes:Routes = [
     FormsModule,
     HttpModule,
   ],
-  providers: [DatePipe],
+  providers: [DatePipe, GetBucketlistsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
