@@ -17,7 +17,8 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [LoggedInGuard],
   },
 ]
 
@@ -36,7 +37,7 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
   ],
-  providers: [DatePipe, GetBucketlistsService],
+  providers: [DatePipe, GetBucketlistsService, LoggedInGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
