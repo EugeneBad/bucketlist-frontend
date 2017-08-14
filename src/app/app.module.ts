@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DatePipe } from '@angular/common';
 import { ItemsComponent } from './items/items.component';
 import { BucketlistComponent } from './bucketlist/bucketlist.component';
+import { LoggedInGuard } from './logged-in.guard';
 
 const appRoutes:Routes = [
   { path: 'home', component: HomeComponent },

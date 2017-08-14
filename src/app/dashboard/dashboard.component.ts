@@ -1,16 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Http, Headers } from '@angular/http';
-import { GetBucketlistsService } from '../get-bucketlists.service'
-
+import { GetBucketlistsService } from '../get-bucketlists.service';
+import { Http } from '@angular/http'
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
+  providers: [GetBucketlistsService]
 })
 export class DashboardComponent implements OnInit {
-  headers = new Headers();
-  token: string;
   response: any;
   bucketlists: any;
   offset: number = 1;
@@ -21,14 +18,8 @@ export class DashboardComponent implements OnInit {
   duplicate_bcktlst_name: boolean;
   successful_bcktlst_add: boolean;
 
-  constructor(private http: Http, private route: ActivatedRoute) {
-    this.route.queryParams.subscribe(params => {
-      this.token = params['token'];
-      this.headers.append('token', this.token);
-      this.getBucketlists();
-
-
-    });
+  constructor(private fetch: GetBucketlistsService, private http: Http) {
+    this.getBucketlists();
     this.reset();
   }
 
@@ -48,12 +39,9 @@ export class DashboardComponent implements OnInit {
 
   getBucketlists() {
 
-
-
-    this.http.get(`http://localhost:5000/api/V1/bucketlists?limit=4&offset=${this.offset}&q=${this.q}`, { headers: this.headers })
-      .subscribe(data => {
+      this.fetch.fetchBucketlists().subscribe(data => {
         this.response = JSON.parse(JSON.parse(JSON.stringify(data))._body);
-        this.bucketlists = this.response.Bucketlists
+        this.bucketlists = this.response.Bucketlists;
       });
   }
 
@@ -77,7 +65,7 @@ export class DashboardComponent implements OnInit {
     let body = new FormData();
     body.set('name', this.new_bucketlist);
     console.log(body.get('name'));
-    this.http.post('http://localhost:5000/api/V1/bucketlists', body, { headers: this.headers })
+    this.http.post('http://localhost:5000/api/V1/bucketlists', body, { headers: this.fetch.headers })
       .subscribe(data => this.validate(data), err => this.validate(err));
 
   }
