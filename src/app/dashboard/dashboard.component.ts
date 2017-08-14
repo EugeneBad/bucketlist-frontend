@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Http, Headers } from '@angular/http';
+import { GetBucketlistsService } from '../get-bucketlists.service'
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -34,7 +36,7 @@ export class DashboardComponent implements OnInit {
     let head = document.getElementsByTagName('head')[0];
     let script = document.createElement('script');
     script.src = 'assets/js/bcktlst_btns.js';
-    script.id = 'bcktlst_btns'
+    script.id = 'bcktlst_btnsbtn'
     head.appendChild(script);
   }
 
