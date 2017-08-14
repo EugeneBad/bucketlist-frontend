@@ -39,7 +39,7 @@ export class DashboardComponent implements OnInit {
 
   getBucketlists() {
 
-      this.fetch.fetchBucketlists().subscribe(data => {
+      this.fetch.fetchBucketlists(this.offset, this.q).subscribe(data => {
         this.response = JSON.parse(JSON.parse(JSON.stringify(data))._body);
         this.bucketlists = this.response.Bucketlists;
       });
