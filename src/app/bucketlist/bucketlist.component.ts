@@ -13,7 +13,7 @@ export class BucketlistComponent implements OnInit {
 
   ngOnInit() {
     let script = document.getElementById('bcktlst_btns')
-    
+
   }
 
 }

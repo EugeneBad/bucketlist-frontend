@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class LoggedInGuard implements CanActivate {
-  status:boolean;
+  status: boolean;
   constructor(private router: Router) {
 
   }
@@ -15,8 +15,9 @@ export class LoggedInGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): any {
 
-    if(this.status == true || sessionStorage['token']){
-      return true;}
+    if (this.status == true || sessionStorage['token']) {
+      return true;
+    }
     this.router.navigate(['/home']);
     return false;
 
