@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GetBucketlistsService } from '../get-bucketlists.service';
-import { Http } from '@angular/http'
+import { Http } from '@angular/http';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -17,7 +19,7 @@ export class DashboardComponent implements OnInit {
   duplicate_bcktlst_name: boolean;
   successful_bcktlst_add: boolean;
 
-  constructor(private fetch: GetBucketlistsService, private http: Http) {
+  constructor(private fetch: GetBucketlistsService, private http: Http, private router: Router) {
     this.getBucketlists();
     this.reset();
   }
@@ -38,10 +40,12 @@ export class DashboardComponent implements OnInit {
 
   getBucketlists() {
 
-      this.fetch.fetchBucketlists(this.offset, this.q).subscribe(data => {
-        this.response = JSON.parse(JSON.parse(JSON.stringify(data))._body);
-        this.bucketlists = this.response.Bucketlists;
-      });
+    this.fetch.fetchBucketlists(this.offset, this.q).subscribe(data => {
+      this.response = data.json();
+      this.bucketlists = this.response.Bucketlists;
+    },
+      err => this.router.navigate(['/home'])
+    );
   }
 
   search(eventData: any) {
@@ -60,7 +64,7 @@ export class DashboardComponent implements OnInit {
     this.getBucketlists();
   }
 
-  add(){
+  add() {
     let body = new FormData();
     body.set('name', this.new_bucketlist);
     console.log(body.get('name'));
@@ -69,26 +73,26 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  validate(response){
+  validate(response) {
     let response_code = response.status;
 
-    if (response_code == 409){
+    if (response_code == 409) {
       this.reset();
       this.duplicate_bcktlst_name = true;
     }
-    if (response_code == 400){
+    if (response_code == 400) {
       this.reset();
       this.missing_bcktlst_name = true;
     }
 
-    if (response_code == 200){
+    if (response_code == 200) {
 
       this.reset();
       this.successful_bcktlst_add = true;
       this.new_bucketlist = '';
       this.getBucketlists();
       let self = this;
-      setTimeout(function(){self.successful_bcktlst_add = false;}, 2000);
+      setTimeout(function() { self.successful_bcktlst_add = false; }, 2000);
     }
 
   }

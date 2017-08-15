@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Http } from '@angular/http';
 import { CanActivate, Router } from '@angular/router';
+import { GetBucketlistsService } from '../get-bucketlists.service';
+import { LoggedInGuard } from '../logged-in.guard';
 
 @Component({
   selector: 'app-auth',
@@ -18,7 +20,7 @@ export class AuthComponent implements OnInit {
   wrong_details:boolean;
 
 
-  constructor(private http:Http, private router:Router) {
+  constructor(private http:Http, private router:Router, private auth: LoggedInGuard) {
     this.reset();
   }
 
@@ -80,9 +82,11 @@ export class AuthComponent implements OnInit {
     }
 
     if (response_code == 200 || response_code == 201){
+      this.auth.status = true;
       let token = JSON.parse(response._body).auth_token;
+      sessionStorage.setItem('token', token);
 
-      this.router.navigate(['/dashboard'], {queryParams: {token: token}});
+      this.router.navigate(['/dashboard']);
     }
 
   }
