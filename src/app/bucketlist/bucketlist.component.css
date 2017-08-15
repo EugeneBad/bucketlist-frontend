@@ -28,8 +28,9 @@
 
 #edit_delete_btn{
   height: 40px;
-  width: 80px;
-  background-color: red;
+  width: 130px;
+  background-color: black;
   z-index: 12;
   position: fixed;
+  margin-left: 7vh;
 }
