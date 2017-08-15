@@ -25,3 +25,11 @@
   font-size: 1.8vh;
   margin-left: 3.0vw;
 }
+
+#edit_delete_btn{
+  height: 40px;
+  width: 80px;
+  background-color: red;
+  z-index: 12;
+  position: fixed;
+}
