@@ -1,3 +1,5 @@
+<div id="bucketlist_{{ bucketlist.id }}">
+
 <div>
   <h2>{{ bucketlist.name | uppercase }}</h2>
 </div>
@@ -26,4 +28,6 @@
 <div class="modified_date">
 
   <h4>Last modified: {{ bucketlist.date_modified | date:longDate }}</h4>
+</div>
+
 </div>
