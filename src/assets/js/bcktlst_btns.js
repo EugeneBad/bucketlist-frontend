@@ -8,6 +8,7 @@ $(document).ready(function() {
     console.log(data.type);
   });
 
-  $('.bucketlist').hover(function(e){console.log(e.type, e.currentTarget.id)}, function(e){console.log(e.type, e.currentTarget.id)});
+  $('.bucketlist').hover(function(e){console.log(e.type, e.currentTarget.id)},
+  function(e){console.log(e.currentTarget.id)});
 
 });
