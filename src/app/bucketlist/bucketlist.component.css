@@ -1,10 +1,13 @@
+#bucketlist_name{
+  height: 3vh;
+}
 .creation_date{
-  margin-top: 6vh;
+  margin-top: 10vh;
   margin-left: 0.5vw;
 }
 
 .modified_date{
-  margin-top: 7vh;
+  margin-top: 5vh;
   margin-left: 0.3vw;
 }
 
@@ -26,11 +29,12 @@
   margin-left: 3.0vw;
 }
 
-#edit_delete_btn{
-  height: 40px;
-  width: 130px;
+.btn{
+  border-width: 0px;
+  margin-bottom: -5vw;
   background-color: black;
-  z-index: 12;
-  position: fixed;
-  margin-left: 7vh;
+  margin-left: 0vh;
+  width: 6vw;
+  border-radius: 0px;
+  opacity: 0.5;
 }

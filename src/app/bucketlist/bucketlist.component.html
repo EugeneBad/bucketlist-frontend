@@ -1,6 +1,6 @@
 <div class="bucketlist" id="bucketlist_{{ bucketlist.id }}">
 
-<div>
+<div id="bucketlist_name">
   <h2>{{ bucketlist.name | uppercase }}</h2>
 </div>
 
@@ -8,14 +8,7 @@
   <h4>Created: {{ bucketlist.date_created  | date:longDate }}</h4>
 </div>
 
-<div id="edit_delete_btn_{{ bucketlist.id }}" hidden="true">
-  <button class="btn btn-warning"style="margin-top:0.2vw;">
-    <span class="glyphicon glyphicon-edit"></span>
-  </button>
-  <button class="btn btn-danger" style="margin-top:0.2vw">
-    <span class="glyphicon glyphicon-trash"></span>
-  </button>
-</div>
+
 
 <div>
   <button class="item_btn">
@@ -30,4 +23,13 @@
   <h4>Last modified: {{ bucketlist.date_modified | date:longDate }}</h4>
 </div>
 
+
+  <button class="btn btn-warning"style="margin-top:0.2vw;">
+    <span class="glyphicon glyphicon-edit"></span>
+  </button>
+  <button class="btn btn-danger" style="margin-top:0.2vw">
+    <span class="glyphicon glyphicon-trash"></span>
+  </button>
+  
+<script src="assets/js/bcktlst_btns.js" id="bcktlst_btns"></script>
 </div>
