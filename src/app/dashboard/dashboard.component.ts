@@ -28,7 +28,7 @@ export class DashboardComponent implements OnInit {
     let head = document.getElementsByTagName('head')[0];
     let script = document.createElement('script');
     script.src = 'assets/js/bcktlst_btns.js';
-    script.id = 'bcktlst_btnsbtn'
+    script.id = 'bcktlst_btns'
     head.appendChild(script);
   }
 

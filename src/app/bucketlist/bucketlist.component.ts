@@ -12,8 +12,18 @@ export class BucketlistComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    let script = document.getElementById('bcktlst_btns')
+    this.refresh_jq();
+  }
 
+  refresh_jq(){
+    let script = document.getElementById('bcktlst_btns');
+    let head = document.getElementsByTagName('head')[0];
+    script.parentNode.removeChild(script);
+
+    let rescript = document.createElement('script');
+    rescript.src = 'assets/js/bcktlst_btns.js';
+    rescript.id = 'bcktlst_btns';
+    head.appendChild(rescript);
   }
 
 }
