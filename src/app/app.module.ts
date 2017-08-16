@@ -12,6 +12,7 @@ import { ItemsComponent } from './items/items.component';
 import { BucketlistComponent } from './bucketlist/bucketlist.component';
 import { LoggedInGuard } from './logged-in.guard';
 import { GetBucketlistsService } from './get-bucketlists.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
