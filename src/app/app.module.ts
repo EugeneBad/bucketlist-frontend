@@ -14,6 +14,7 @@ import { LoggedInGuard } from './logged-in.guard';
 import { GetBucketlistsService } from './get-bucketlists.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   {
@@ -37,6 +38,8 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
+    BrowserAnimationsModule
+
   ],
   providers: [DatePipe, GetBucketlistsService, LoggedInGuard],
   bootstrap: [AppComponent]

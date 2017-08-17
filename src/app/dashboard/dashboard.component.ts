@@ -9,11 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  response: any;
-  bucketlists: any;
+  response: any = '';
+  bucketlists: any = '';
   offset: number = 1;
   q: string = '';
-
   new_bucketlist: string = '';
   missing_bcktlst_name: boolean;
   duplicate_bcktlst_name: boolean;
