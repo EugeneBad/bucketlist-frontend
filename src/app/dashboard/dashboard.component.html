@@ -31,13 +31,13 @@
   <div class="col-md-12">
     <h1>Bucketlists</h1>
     <hr>
-    <div *ngIf="bucketlists.length == 0">
+    <div *ngIf="bucketlists && bucketlists.length == 0">
       <h2 style="text-align:center; color: red; margin-top:15vh">
         There is nothing here!
       </h2>
     </div>
 
-    <div *ngIf="bucketlists.length > 0">
+    <div *ngIf="bucketlists && bucketlists.length > 0">
 
       <div class="bucketlists" *ngFor="let bucketlist of bucketlists">
 
