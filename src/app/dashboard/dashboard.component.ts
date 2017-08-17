@@ -18,7 +18,7 @@ import {
   animations: [
     trigger('fadeIn', [
         state('true', style({opacity:1})),
-        transition('* => true', animate('0.6s 0.2s ease-in-out'))
+        transition('* => true', animate('1s 0.9s ease-out'))
     ])
 ]
 })
