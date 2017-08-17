@@ -67,6 +67,7 @@ h1{
 }
 
 .bucketlists{
+  opacity: 0;
   text-align:center;
   color: white;
   display: inline-block;

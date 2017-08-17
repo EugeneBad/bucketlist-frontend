@@ -2,23 +2,39 @@ import { Component, OnInit } from '@angular/core';
 import { GetBucketlistsService } from '../get-bucketlists.service';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/core';
+
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
+  animations: [
+    trigger('fadeIn', [
+        state('true', style({opacity:1})),
+        transition('* => true', animate('0.6s 0.2s ease-in-out'))
+    ])
+]
 })
 export class DashboardComponent implements OnInit {
   response: any = '';
   bucketlists: any = '';
   offset: number = 1;
   q: string = '';
+  loaded:string;
   new_bucketlist: string = '';
   missing_bcktlst_name: boolean;
   duplicate_bcktlst_name: boolean;
   successful_bcktlst_add: boolean;
 
   constructor(private fetch: GetBucketlistsService, private http: Http, private router: Router) {
+    this.loaded = 'true';
     this.getBucketlists();
     this.reset();
   }
@@ -41,7 +57,7 @@ export class DashboardComponent implements OnInit {
 
     this.fetch.fetchBucketlists(this.offset, this.q).subscribe(data => {
       this.response = data.json();
-      this.bucketlists = this.response.Bucketlists;
+      this.bucketlists =  this.response.Bucketlists;
     },
       err => this.router.navigate(['/home'])
     );

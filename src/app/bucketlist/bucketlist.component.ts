@@ -9,7 +9,7 @@ export class BucketlistComponent implements OnInit {
 
   @Input() bucketlist;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
   }
