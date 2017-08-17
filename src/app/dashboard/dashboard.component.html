@@ -31,29 +31,31 @@
   <div class="col-md-12">
     <h1>Bucketlists</h1>
     <hr>
-    <div *ngIf="bucketlists && bucketlists.length == 0">
-      <h2 style="text-align:center; color: red; margin-top:15vh">
+    <div hidden="true">
+
+      <div *ngIf="bucketlists && bucketlists.length == 0">
+        <h2 style="text-align:center; color: red; margin-top:15vh">
         There is nothing here!
       </h2>
-    </div>
+      </div>
 
-    <div *ngIf="bucketlists && bucketlists.length > 0">
+      <div *ngIf="bucketlists && bucketlists.length > 0">
 
-      <div class="bucketlists" *ngFor="let bucketlist of bucketlists" [@fadeIn]="loaded">
+        <div class="bucketlists" *ngFor="let bucketlist of bucketlists" [@fadeIn]="loaded">
 
-        <app-bucketlist [bucketlist]="bucketlist"></app-bucketlist>
+          <app-bucketlist [bucketlist]="bucketlist"></app-bucketlist>
+
+        </div>
 
       </div>
 
-    </div>
-
-    <button *ngIf="response.has_prev" id="prev_btn" class="btn" (click)="prev()">
+      <button *ngIf="response.has_prev" id="prev_btn" class="btn" (click)="prev()">
       Prev
     </button>
 
-    <button *ngIf="response.has_next" id="next_btn" class="btn" (click)="next()">
+      <button *ngIf="response.has_next" id="next_btn" class="btn" (click)="next()">
       Next
     </button>
-
+    </div>
   </div>
 </div>
