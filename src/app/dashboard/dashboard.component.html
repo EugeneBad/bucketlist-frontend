@@ -8,7 +8,7 @@
 
   <span id="greeting_span">Welcome username!</span>
 
-  <button id="logout_btn" class="btn btn-danger navbar-btn" (click)="toggleLoad()">
+  <button id="logout_btn" class="btn btn-danger navbar-btn">
   Logout
   </button>
 
@@ -31,7 +31,7 @@
   <div class="col-md-12">
     <h1>Bucketlists</h1>
     <hr>
-    <div id="bucketlists"  (@fader.done)="showItems($event)" [@fader]="load" [ngClass]="{'hidden':hideBucketlists}">
+    <div id="bucketlists"  (@fader.done)="showItems($event)" [@fader]="loadBucketlists" [ngClass]="{'hidden':hideBucketlists}">
 
       <div *ngIf="bucketlists && bucketlists.length == 0">
         <h2 style="text-align:center; color: red; margin-top:15vh">
@@ -41,9 +41,9 @@
 
       <div *ngIf="bucketlists && bucketlists.length > 0">
 
-        <div class="bucketlists" *ngFor="let bucketlist of bucketlists" [@fader]="load">
+        <div class="bucketlists" *ngFor="let bucketlist of bucketlists" [@fader]="loadBucketlists">
 
-          <app-bucketlist [bucketlist]="bucketlist"></app-bucketlist>
+          <app-bucketlist [bucketlist]="bucketlist" (onClickItem)="toggleLoadItems()"></app-bucketlist>
 
         </div>
 
@@ -57,5 +57,10 @@
       Next
     </button>
     </div>
+
+    <div id="items" (@fader.done)="showBucketlists($event)" [@fader]="loadItems" [ngClass]="{'hidden':hideItems}">
+      <app-items ></app-items>
+    </div>
+
   </div>
 </div>

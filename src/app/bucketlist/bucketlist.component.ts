@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-bucketlist',
@@ -8,10 +8,16 @@ import { Component, OnInit, Input } from '@angular/core';
 export class BucketlistComponent implements OnInit {
 
   @Input() bucketlist;
+  @Output() onClickItem = new EventEmitter();
 
   constructor() {}
 
   ngOnInit() {
   }
+
+  getItems(){
+    this.onClickItem.emit();
+  }
+
 
 }

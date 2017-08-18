@@ -2,14 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GetBucketlistsService } from '../get-bucketlists.service';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition
-} from '@angular/core';
-
+import { trigger, state, style, animate, transition } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -25,50 +18,40 @@ import {
 ]
 })
 export class DashboardComponent implements OnInit {
+  // Variables to control the querying of bucketlists.
   response: any = '';
   bucketlists: any = '';
   offset: number = 1;
   q: string = '';
-  load:string;
+
+  // Variables to control transitions between bucketlists and items.
+  loadItems:string;
+  loadBucketlists:string;
+  hideBucketlists:boolean;
+  hideItems:boolean;
+
+  // Adding new bucketlist notifications.
   new_bucketlist: string = '';
   missing_bcktlst_name: boolean;
   duplicate_bcktlst_name: boolean;
   successful_bcktlst_add: boolean;
-  hideBucketlists:boolean;
-  hideItems:boolean;
 
   constructor(private fetch: GetBucketlistsService, private http: Http, private router: Router) {
     this.hideBucketlists = false;
     this.hideItems = true;
-    this.load = 'in';
+    this.loadItems = 'out';
+    this.loadBucketlists = 'in';
     this.getBucketlists();
     this.reset();
   }
 
   ngOnInit() {
+    // Add external javascript to the dashboard component.
     let head = document.getElementsByTagName('head')[0];
     let script = document.createElement('script');
     script.src = 'assets/js/bcktlst_btns.js';
     script.id = 'bcktlst_btns'
     head.appendChild(script);
-  }
-
-  showItems(event){
-    if (event.toState == 'out'){
-      this.hideBucketlists = true;
-      this.hideItems = false;
-    }
-
-
-
-  }
-
-  showBucketlists(){
-
-  }
-
-  toggleLoad(){
-    this.load = (this.load == 'in') ? 'out': 'in';
   }
 
   reset() {
@@ -134,6 +117,36 @@ export class DashboardComponent implements OnInit {
       setTimeout(function() { self.successful_bcktlst_add = false; }, 2000);
     }
 
+  }
+
+  // Callback function called at the end of id=bucketlists div transition from
+  // in to out.
+  showItems(event){
+    if (event.fromState == 'in' && event.toState == 'out'){
+      this.hideBucketlists = true;
+      this.hideItems = false;
+      this.loadItems = 'in';
+      this.loadBucketlists = '';
+    }
+  }
+
+  // Callback function called at the end of id=items div transition from
+  // in to out.
+  showBucketlists(event){
+    if (event.fromState == 'in' && event.toState == 'out'){
+      this.hideBucketlists = false;
+      this.hideItems = true;
+      this.loadItems = '';
+      this.loadBucketlists = 'in';
+    }
+  }
+
+  toggleLoadItems(){
+    this.loadBucketlists = 'out';
+  }
+  
+  toggleLoadBucketlists(){
+    this.loadItems = 'out';
   }
 
 }
