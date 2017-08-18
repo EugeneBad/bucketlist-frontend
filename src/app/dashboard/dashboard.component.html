@@ -31,7 +31,7 @@
   <div class="col-md-12">
     <h1>Bucketlists</h1>
     <hr>
-    <div>
+    <div id="bucketlists"  [@fader]="load" [ngClass]="{'hidden':hideBucketlists}">
 
       <div *ngIf="bucketlists && bucketlists.length == 0">
         <h2 style="text-align:center; color: red; margin-top:15vh">
@@ -41,7 +41,7 @@
 
       <div *ngIf="bucketlists && bucketlists.length > 0">
 
-        <div class="bucketlists" *ngFor="let bucketlist of bucketlists" [@fadeIn]="loaded">
+        <div class="bucketlists" *ngFor="let bucketlist of bucketlists" [@fader]="load">
 
           <app-bucketlist [bucketlist]="bucketlist"></app-bucketlist>
 

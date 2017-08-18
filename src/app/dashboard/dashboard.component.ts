@@ -16,7 +16,7 @@ import {
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
   animations: [
-    trigger('fadeIn', [
+    trigger('fader', [
         state('true', style({opacity:1})),
         transition('* => true', animate('1s 0.9s ease-out'))
     ])
@@ -27,14 +27,16 @@ export class DashboardComponent implements OnInit {
   bucketlists: any = '';
   offset: number = 1;
   q: string = '';
-  loaded:string;
+  load:string;
   new_bucketlist: string = '';
   missing_bcktlst_name: boolean;
   duplicate_bcktlst_name: boolean;
   successful_bcktlst_add: boolean;
+  hideBucketlists:boolean
 
   constructor(private fetch: GetBucketlistsService, private http: Http, private router: Router) {
-    this.loaded = 'true';
+    this.hideBucketlists = false;
+    this.load = 'true';
     this.getBucketlists();
     this.reset();
   }
