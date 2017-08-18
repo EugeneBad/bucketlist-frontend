@@ -53,7 +53,13 @@ export class DashboardComponent implements OnInit {
     head.appendChild(script);
   }
 
-  showItems(){
+  showItems(event){
+    if (event.toState == 'out'){
+      this.hideBucketlists = true;
+      this.hideItems = false;
+    }
+
+
 
   }
 
