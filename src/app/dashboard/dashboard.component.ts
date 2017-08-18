@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
   // Variables to control the querying of bucketlists.
   response: any = '';
   bucketlists: any = '';
+  requested_bucketlist: string;
   offset: number = 1;
   q: string = '';
 
@@ -142,7 +143,8 @@ export class DashboardComponent implements OnInit {
   }
 
   toggleLoadItems(event){
-    console.log(event);
+
+    this.requested_bucketlist = event.target.id.split('_')[2];
     this.loadBucketlists = 'out';
   }
 

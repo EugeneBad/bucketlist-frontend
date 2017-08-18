@@ -59,7 +59,7 @@
     </div>
 
     <div id="items" (@fader.done)="showBucketlists($event)" [@fader]="loadItems" [ngClass]="{'hidden':hideItems}">
-      <app-items ></app-items>
+      <app-items [bucketlist_id]="requested_bucketlist"></app-items>
     </div>
 
   </div>
