@@ -17,8 +17,10 @@ import {
   styleUrls: ['./dashboard.component.css'],
   animations: [
     trigger('fader', [
-        state('true', style({opacity:1})),
-        transition('* => true', animate('1s 0.9s ease-out'))
+        state('in', style({opacity:1})),
+        state('out', style({opacity:0})),
+        transition('* => in', animate('1s 0.9s ease-out')),
+        transition('* => out', animate('1s 0.9s ease-out'))
     ])
 ]
 })
@@ -32,11 +34,13 @@ export class DashboardComponent implements OnInit {
   missing_bcktlst_name: boolean;
   duplicate_bcktlst_name: boolean;
   successful_bcktlst_add: boolean;
-  hideBucketlists:boolean
+  hideBucketlists:boolean;
+  hideItems:boolean;
 
   constructor(private fetch: GetBucketlistsService, private http: Http, private router: Router) {
     this.hideBucketlists = false;
-    this.load = 'true';
+    this.hideItems = true;
+    this.load = 'in';
     this.getBucketlists();
     this.reset();
   }
@@ -47,6 +51,18 @@ export class DashboardComponent implements OnInit {
     script.src = 'assets/js/bcktlst_btns.js';
     script.id = 'bcktlst_btns'
     head.appendChild(script);
+  }
+
+  showItems(){
+
+  }
+
+  showBucketlists(){
+
+  }
+
+  toggleLoad(){
+    this.load = (this.load == 'in') ? 'out': 'in';
   }
 
   reset() {
