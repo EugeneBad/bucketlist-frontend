@@ -11,7 +11,7 @@
 
 
 <div>
-  <button class="item_btn" (click)="getItems()">
+  <button id="item_btn_{{ bucketlist.id }}"class="item_btn" (click)="getItems($event)">
     Items
     <span class="badge label_span">{{ bucketlist.items }}</span>
   </button>

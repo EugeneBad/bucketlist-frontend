@@ -15,8 +15,8 @@ export class BucketlistComponent implements OnInit {
   ngOnInit() {
   }
 
-  getItems(){
-    this.onClickItem.emit();
+  getItems(event){
+    this.onClickItem.emit(event);
   }
 
 

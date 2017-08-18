@@ -43,7 +43,7 @@
 
         <div class="bucketlists" *ngFor="let bucketlist of bucketlists" [@fader]="loadBucketlists">
 
-          <app-bucketlist [bucketlist]="bucketlist" (onClickItem)="toggleLoadItems()"></app-bucketlist>
+          <app-bucketlist [bucketlist]="bucketlist" (onClickItem)="toggleLoadItems($event)"></app-bucketlist>
 
         </div>
 

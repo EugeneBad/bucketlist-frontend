@@ -141,10 +141,11 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  toggleLoadItems(){
+  toggleLoadItems(event){
+    console.log(event);
     this.loadBucketlists = 'out';
   }
-  
+
   toggleLoadBucketlists(){
     this.loadItems = 'out';
   }
