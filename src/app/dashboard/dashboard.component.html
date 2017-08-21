@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default">
-  <button id="new_add_btn" class="btn btn-info navbar-btn">
+  <button id="new_add_btn" class="btn btn-info navbar-btn" [mdMenuTriggerFor]="newAdd">
     Add new {{ context }}
   </button>
 
@@ -7,14 +7,14 @@
 
   <span id="greeting_span">Welcome username!</span>
 
-  <button id="logout_btn" class="btn btn-danger navbar-btn" [mdMenuTriggerFor]="appMenu">
+  <button id="logout_btn" class="btn btn-danger navbar-btn">
   Logout
   </button>
 
 </nav>
 
 
-<md-menu #appMenu="mdMenu" yPosition="below" xPosition="after" style="opacity: 0.5">
+<md-menu #newAdd="mdMenu" yPosition="below" xPosition="after" style="opacity: 0.5">
 
   <input id="new_add_name" (click)="$event.stopPropagation()" class="form-control" placeholder="New {{ context }}..." maxlength="20" [(ngModel)]="new_bucketlist" />
 
