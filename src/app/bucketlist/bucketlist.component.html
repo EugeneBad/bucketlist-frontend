@@ -1,35 +1,46 @@
-<div class="bucketlist" id="bucketlist_{{ bucketlist.id }}">
-
-<div id="bucketlist_name">
-  <h2>{{ bucketlist.name | uppercase }}</h2>
+<div *ngIf="bucketlists && bucketlists.length == 0">
+  <h2 style="text-align:center; color: red; margin-top:15vh">
+  There is nothing here!
+  </h2>
 </div>
+<div *ngIf="bucketlists && bucketlists.length > 0">
+  <div class="bucketlists" *ngFor="let bucketlist of bucketlists" [@fader]="fade">
 
-<div class="creation_date">
-  <h4>Created: {{ bucketlist.date_created  | date:longDate }}</h4>
+    <div class="bucketlist" id="bucketlist_{{ bucketlist.id }}">
+      <div id="bucketlist_name">
+        <h2>{{ bucketlist.name | uppercase }}</h2>
+      </div>
+
+      <div class="creation_date">
+        <h4>Created: {{ bucketlist.date_created  | date:longDate }}</h4>
+      </div>
+
+      <div>
+        <button id="item_btn_{{ bucketlist.id }}" class="item_btn" (click)="getItems($event)">
+          Items
+          <span class="badge label_span">{{ bucketlist.items }}</span>
+        </button>
+      </div>
+
+      <div class="modified_date">
+        <h4>Last modified: {{ bucketlist.date_modified | date:longDate }}</h4>
+      </div>
+
+      <button class="btn btn-warning edit_del_btn" style="margin-top:0.2vw;">
+        <span class="glyphicon glyphicon-edit"></span>
+      </button>
+
+      <button class="btn btn-danger edit_del_btn" style="margin-top:0.2vw">
+        <span class="glyphicon glyphicon-trash"></span>
+      </button>
+
+    </div>
+  </div>
 </div>
+<button *ngIf="response.has_prev" id="prev_btn" class="btn pagination_btn" (click)="prev()">
+      Prev
+</button>
 
-
-
-<div>
-  <button id="item_btn_{{ bucketlist.id }}"class="item_btn" (click)="getItems($event)">
-    Items
-    <span class="badge label_span">{{ bucketlist.items }}</span>
-  </button>
-
-</div>
-
-<div class="modified_date">
-
-  <h4>Last modified: {{ bucketlist.date_modified | date:longDate }}</h4>
-</div>
-
-
-  <button class="btn btn-warning"style="margin-top:0.2vw;">
-    <span class="glyphicon glyphicon-edit"></span>
-  </button>
-  <button class="btn btn-danger" style="margin-top:0.2vw">
-    <span class="glyphicon glyphicon-trash"></span>
-  </button>
-
-
-</div>
+<button *ngIf="response.has_next" id="next_btn" class="btn pagination_btn" (click)="next()">
+      Next
+</button>

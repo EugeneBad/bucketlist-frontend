@@ -1,22 +1,23 @@
-#search_box{
+#search_box {
   display: inline;
   margin-left: 10vw;
   width: 22vw;
 }
-#logout_btn{
+
+#logout_btn {
   margin-left: 4vw;
 }
 
-nav{
+nav {
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
 }
 
-#new_bcktlst_btn{
+#new_add_btn {
   margin-left: 6vw;
 }
 
-#new_bcktlst_div{
+#new_add_div {
   position: fixed;
   top: 45px;
   left: 185px;
@@ -27,74 +28,47 @@ nav{
   box-shadow: -2px 2px 2px;
 }
 
-#new_bcktlst_name{
+#new_add_name {
   margin-left: 1.1vw;
   margin-top: 0.4vw;
   width: 240px;
 }
 
-#new_bcktlst_submit{
+#new_add_submit {
   margin-top: 0.1vw;
   margin-left: 7.9vw;
   margin-bottom: 0.4vw;
 }
 
-#bucketlist_validation{
+#new_add_validation {
   font-size: 1.5vh;
   margin-top: 2vh;
   margin-bottom: 2vh;
   opacity: 0.8;
 }
 
-#greeting_span{
+#greeting_span {
   font-size: 2.2vh;
   margin-left: 8vw;
 }
 
-.col-md-12{
+.col-md-12 {
   opacity: 0.6;
   background-color: white;
   height: 80vh;
   box-shadow: -2px -2px 3px;
 }
 
-h1{
+h1 {
   text-align: center;
   font-family: Helvetica;
   font-size: 7vh;
 }
 
-.hidden{
+.hidden {
   display: none;
 }
 
-.bucketlists{
+#bucketlists{
   opacity: 0;
-  text-align:center;
-  color: white;
-  display: inline-block;
-  width: 30vh;
-  height: 45vh;
-  background-color: rgb(0,0,0);
-  margin-left: 2vw;
-  margin-top: 7vh;
-}
-
-#next_btn, #prev_btn{
-  opacity: 1;
-  color: white;
-  margin-top: 5vh;
-  border-width: medium;
-  background-color: DeepSkyBlue;
-}
-
-#next_btn{
-position: fixed;
-left: 51vw;
-
-}
-
-#prev_btn{
-position: fixed;
-left: 44vw;
 }

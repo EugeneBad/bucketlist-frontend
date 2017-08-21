@@ -1,66 +1,45 @@
 <nav class="navbar navbar-default">
-  <button id="new_bcktlst_btn" class="btn btn-info navbar-btn">
-    Add new bucketlist
-    <b style="margin-left: 1vh;" class="caret"></b>
+  <button id="new_add_btn" class="btn btn-info navbar-btn">
+    Add new {{ context }}
   </button>
 
-  <input (keyup)="search($event)" id="search_box" type="text" class="form-control" placeholder="Look for bucketlist.." />
+  <input (keyup)="search($event)" id="search_box" type="text" class="form-control" placeholder="Look for {{ context }}.." />
 
   <span id="greeting_span">Welcome username!</span>
 
-  <button id="logout_btn" class="btn btn-danger navbar-btn">
+  <button id="logout_btn" class="btn btn-danger navbar-btn" [mdMenuTriggerFor]="appMenu">
   Logout
   </button>
 
 </nav>
 
-<div id="new_bcktlst_div" hidden="true">
-  <input id="new_bcktlst_name" class="form-control" placeholder="Bucketlist Name..." maxlength="20" [(ngModel)]="new_bucketlist" />
 
-  <div id="bucketlist_validation" style="text-align: center;">
-    <span *ngIf="missing_bcktlst_name" class="alert alert-danger">New Bucketlist Name Missing</span>
-    <span *ngIf="duplicate_bcktlst_name" class="alert alert-danger">Bucketlist Name Already Exists</span>
-    <span *ngIf="successful_bcktlst_add" class="alert alert-success">New Bucketlist Added!</span>
+<md-menu #appMenu="mdMenu" yPosition="below" xPosition="after" style="opacity: 0.5">
+
+  <input id="new_add_name" (click)="$event.stopPropagation()" class="form-control" placeholder="New {{ context }}..." maxlength="20" [(ngModel)]="new_bucketlist" />
+
+  <div id="new_add_validation" style="text-align: center;">
+    <span *ngIf="missing_new_name" class="alert alert-danger">New {{ context }} name required</span>
+    <span *ngIf="duplicate_new_name" class="alert alert-danger">This {{ context }} already exists</span>
+    <span *ngIf="successful_new_add" class="alert alert-success">New {{ context }} added!</span>
   </div>
 
-  <button id="new_bcktlst_submit" class="btn btn-success" (click)="add()">Add</button>
+  <button id="new_add_submit" class="btn btn-success" (click)="add()" (click)="$event.stopPropagation()">Add</button>
 
-</div>
+</md-menu>
 
 <div class="row">
   <div class="col-md-12">
     <h1>Bucketlists</h1>
     <hr>
-    <div id="bucketlists"  (@fader.done)="showItems($event)" [@fader]="loadBucketlists" [ngClass]="{'hidden':hideBucketlists}">
 
-      <div *ngIf="bucketlists && bucketlists.length == 0">
-        <h2 style="text-align:center; color: red; margin-top:15vh">
-        There is nothing here!
-      </h2>
-      </div>
-
-      <div *ngIf="bucketlists && bucketlists.length > 0">
-
-        <div class="bucketlists" *ngFor="let bucketlist of bucketlists" [@fader]="loadBucketlists">
-
-          <app-bucketlist [bucketlist]="bucketlist" (onClickItem)="toggleLoadItems($event)"></app-bucketlist>
-
-        </div>
-
-      </div>
-
-      <button *ngIf="response.has_prev" id="prev_btn" class="btn" (click)="prev()">
-      Prev
-    </button>
-
-      <button *ngIf="response.has_next" id="next_btn" class="btn" (click)="next()">
-      Next
-    </button>
+    <div id="bucketlists" (@fader.done)="showItems($event)" [@fader]="loadBucketlists" [ngClass]="{'hidden':hideBucketlists}">
+      <app-bucketlist [q]="q" (onClickItem)="toggleLoadItems($event)"></app-bucketlist>
     </div>
 
-    <div id="items" (@fader.done)="showBucketlists($event)" [@fader]="loadItems" [ngClass]="{'hidden':hideItems}">
-      <app-items [bucketlist_id]="requested_bucketlist"></app-items>
-    </div>
+  </div>
 
+  <div id="items" (@fader.done)="showBucketlists($event)" [@fader]="loadItems" [ngClass]="{'hidden':hideItems}">
+    <app-items [bucketlist_id]="requested_bucketlist" [q]="q"></app-items>
   </div>
 </div>

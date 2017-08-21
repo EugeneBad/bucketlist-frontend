@@ -13,6 +13,7 @@ import { BucketlistComponent } from './bucketlist/bucketlist.component';
 import { LoggedInGuard } from './logged-in.guard';
 import { GetBucketlistsService } from './get-bucketlists.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdMenuModule } from '@angular/material';
 
 
 const appRoutes: Routes = [
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MdMenuModule
 
   ],
   providers: [DatePipe, GetBucketlistsService, LoggedInGuard],
