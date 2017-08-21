@@ -14,9 +14,9 @@
 </nav>
 
 
-<md-menu #newAdd="mdMenu" yPosition="below" xPosition="after" style="opacity: 0.5">
+<md-menu class="new_add_div" #newAdd="mdMenu">
 
-  <input id="new_add_name" (click)="$event.stopPropagation()" class="form-control" placeholder="New {{ context }}..." maxlength="20" [(ngModel)]="new_bucketlist" />
+  <input id="new_add_name" (click)="$event.stopPropagation()" class="form-control" placeholder="New {{ context }}..." maxlength="20" [(ngModel)]="new_add" />
 
   <div id="new_add_validation" style="text-align: center;">
     <span *ngIf="missing_new_name" class="alert alert-danger">New {{ context }} name required</span>

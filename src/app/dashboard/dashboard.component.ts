@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Http } from '@angular/http';
 import { GetBucketlistsService } from '../get-bucketlists.service';
 import { faderAnimation } from '../fader';
@@ -7,7 +7,8 @@ import { faderAnimation } from '../fader';
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
-  animations: [ faderAnimation ]
+  animations: [ faderAnimation ],
+  encapsulation: ViewEncapsulation.None
 })
 export class DashboardComponent implements OnInit {
   // Variables to control the querying of bucketlists/items.
