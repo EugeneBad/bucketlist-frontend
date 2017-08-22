@@ -26,15 +26,26 @@
         <h4>Last modified: {{ bucketlist.date_modified | date:longDate }}</h4>
       </div>
 
-      <button class="btn btn-warning edit_del_btn" style="margin-top:0.2vw;">
+      <button class="btn btn-warning edit_del_btn" style="margin-top:0.2vw;" [mdMenuTriggerFor]="nameEdit">
         <span class="glyphicon glyphicon-edit"></span>
       </button>
+      <md-menu #nameEdit="mdMenu">
+        <input id="edit_bcktlst_name" (click)="$event.stopPropagation()" class="form-control" placeholder="{{ bucketlist.name }}" maxlength="20"  [(ngModel)]="edited_name"/>
 
-      <button class="btn btn-danger edit_del_btn" style="margin-top:0.2vw">
+        <div id="edit_validation" style="text-align: center;">
+          <span *ngIf="duplicate_new_name" class="alert alert-danger">Bucketlist name already exists</span>
+          <span *ngIf="successful_new_add" class="alert alert-success">Bucketlist successfully updated!</span>
+        </div>
+
+        <button id="edit_btn_{{ bucketlist.id }}" class="btn btn-success edit_submit" (click)="$event.stopPropagation()" (click)="editBucketlist()" >Edit</button>
+      </md-menu>
+
+      <button id="delete_btn_{{ bucketlist.id }}" class="btn btn-danger edit_del_btn" style="margin-top:0.2vw">
         <span class="glyphicon glyphicon-trash"></span>
       </button>
 
     </div>
+
   </div>
 </div>
 <button *ngIf="response.has_prev" id="prev_btn" class="btn pagination_btn" (click)="prev()">

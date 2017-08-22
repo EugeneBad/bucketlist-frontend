@@ -17,6 +17,7 @@ export class BucketlistComponent implements OnInit {
   response: any = '';
   bucketlists: any = '';
   fade:string = 'in';
+  edited_name:string;
 
   @Input() bucketlist;
   @Input() q;
@@ -51,5 +52,11 @@ export class BucketlistComponent implements OnInit {
 
   getItems(event){
     this.onClickItem.emit(event);
+  }
+  deleteBucketlist(event){
+    let bucketlistId = event.target.id.split('_')[2];
+  }
+  editBucketlist(event){
+    let bucketlistId = event.target.id.split('_')[2];
   }
 }

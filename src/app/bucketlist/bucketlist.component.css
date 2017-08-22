@@ -51,6 +51,31 @@
   opacity: 0.5;
 }
 
+.mat-menu-panel, .mat-menu-content {
+  background-color: white;
+  border-radius: 6px;
+  width: 270px;
+}
+
+#edit_bcktlst_name {
+  margin-left: 1.7vw;
+  margin-top: 0.4vw;
+  width: 220px;
+}
+
+.edit_submit {
+  margin-top: 0.1vw;
+  margin-left: 7.9vw;
+  margin-bottom: 0.4vw;
+}
+
+#edit_validation {
+  font-size: 1.5vh;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  opacity: 0.8;
+}
+
 .pagination_btn{
   opacity: 1;
   color: white;
