@@ -1,26 +1,31 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th>Firstname</th>
-      <th>Lastname</th>
-      <th>{{ q }}</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>John</td>
-      <td>Doe</td>
-      <td>john@example.com</td>
-    </tr>
-    <tr>
-      <td>Mary</td>
-      <td>Moe</td>
-      <td>mary@example.com</td>
-    </tr>
-    <tr>
-      <td>July</td>
-      <td>Dooley</td>
-      <td>july@example.com</td>
-    </tr>
-  </tbody>
-</table>
+<div class="row">
+  <div class="col-md-7" style="height: 460px; border-style: solid; border-width:0px 2px 0px 0px">
+
+    <md-tab-group md-stretch-tabs [selectedIndex]="0">
+      <md-tab >
+        <ng-template md-tab-label>
+          <span>Pending Items</span>
+        </ng-template>
+        <app-table [itemsArray]="itemsArray"></app-table>
+      </md-tab>
+      <md-tab label="Completed Items">
+      <app-table [itemsArray]="itemsArray"></app-table>
+      </md-tab>
+    </md-tab-group>
+
+  </div>
+
+<div class="col-md-5" style="height: 460px;">
+  <h2 style="text-align:center; text-decoration:underline">Stats</h2>
+  <div>
+  <canvas baseChart
+              [data]="pieChartData"
+              [labels]="pieChartLabels"
+              [chartType]="pieChartType"
+              [colors]="pieChartColors"
+  width="400" height="330"></canvas>
+</div>
+</div>
+
+
+</div>

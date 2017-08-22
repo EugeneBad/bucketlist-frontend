@@ -14,6 +14,10 @@ import { LoggedInGuard } from './logged-in.guard';
 import { GetBucketlistsService } from './get-bucketlists.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdMenuModule } from '@angular/material';
+import { MdTabsModule } from '@angular/material';
+import { MdGridListModule } from '@angular/material';
+import { ChartsModule } from 'ng2-charts';
+import { TableComponent } from './table/table.component';
 
 
 const appRoutes: Routes = [
@@ -32,7 +36,8 @@ const appRoutes: Routes = [
     AuthComponent,
     DashboardComponent,
     ItemsComponent,
-    BucketlistComponent
+    BucketlistComponent,
+    TableComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -40,7 +45,9 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
-    MdMenuModule
+    MdMenuModule,
+    MdTabsModule,
+    ChartsModule
 
   ],
   providers: [DatePipe, GetBucketlistsService, LoggedInGuard],

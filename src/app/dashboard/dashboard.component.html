@@ -37,9 +37,8 @@
       <app-bucketlist [q]="q" (onClickItem)="toggleLoadItems($event)"></app-bucketlist>
     </div>
 
-  </div>
-
   <div id="items" (@fader.done)="showBucketlists($event)" [@fader]="loadItems" [ngClass]="{'hidden':hideItems}">
     <app-items [bucketlist_id]="requested_bucketlist" [q]="q"></app-items>
+  </div>
   </div>
 </div>
