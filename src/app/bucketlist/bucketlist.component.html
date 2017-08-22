@@ -1,3 +1,25 @@
+<h1>Bucketlists</h1>
+<hr>
+<button id="new_add_btn" class="btn " [mdMenuTriggerFor]="newAdd" style="opacity:1;">
+  Add new bucketlist
+</button>
+
+<md-menu class="new_add_div" #newAdd="mdMenu">
+
+  <input id="new_add_name" (click)="$event.stopPropagation()" class="form-control" placeholder="New bucketlist..." maxlength="20" [(ngModel)]="new_add" />
+
+  <div id="new_add_validation" style="text-align: center;">
+    <span *ngIf="duplicate_name" class="alert alert-danger">This bucketlist already exists</span>
+    <span *ngIf="successful_name" class="alert alert-success">New bucketlist added!</span>
+  </div>
+
+  <button id="new_add_submit" class="btn btn-success" (click)="add()" (click)="$event.stopPropagation()">Add</button>
+
+</md-menu>
+
+<input (keyup)="search($event)" id="search_box" type="text" class="form-control" placeholder="Look for bucketlist.." [(ngModel)]="q"/>
+
+
 <div *ngIf="bucketlists && bucketlists.length == 0">
   <h2 style="text-align:center; color: red; margin-top:15vh">
   There is nothing here!
@@ -33,8 +55,8 @@
         <input id="edit_bcktlst_name" (click)="$event.stopPropagation()" class="form-control" placeholder="{{ bucketlist.name }}" maxlength="20"  [(ngModel)]="edited_name"/>
 
         <div id="edit_validation" style="text-align: center;">
-          <span *ngIf="duplicate_edit_name" class="alert alert-danger">Bucketlist name already exists</span>
-          <span *ngIf="successful_edit" class="alert alert-success">Bucketlist successfully updated!</span>
+          <span *ngIf="duplicate_name" class="alert alert-danger">Bucketlist name already exists</span>
+          <span *ngIf="successful_name" class="alert alert-success">Bucketlist successfully updated!</span>
         </div>
 
         <button id="edit_btn_{{ bucketlist.id }}" class="btn btn-success edit_submit" (click)="$event.stopPropagation()" (click)="editBucketlist($event)">Edit</button>

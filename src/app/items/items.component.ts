@@ -1,4 +1,6 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, OnChanges, SimpleChanges } from '@angular/core';
+import { Http } from '@angular/http';
+import { GetBucketlistsService } from '../get-bucketlists.service';
 
 @Component({
   selector: 'app-items',
@@ -11,19 +13,31 @@ export class ItemsComponent implements OnInit {
   public pieChartData:number[] = [3, 5];
   public pieChartType:string = 'doughnut';
   public pieChartColors: Array < any > = [{
-   backgroundColor: ['green', 'gold']}]
+   backgroundColor: ['green', 'gold']}];
 
-   public itemsArray:any = [{"name": "See the pyramids in Cairo", "creation_date": "2017-12-8"},
-                 {"name": "Climb the Himalayas", "creation_date": "2017-5-7"},
-                 {"name": "Drive a Maseratti on the AutoBahn", "creation_date": "2017-9-13"}
-                ]
+  itemsBucketlist: string = "";
+  itemsArray:any = "";
+
 
   @Input () bucketlist_id;
   @Input () q;
 
-  constructor() { }
+  constructor(private http: Http, private fetch: GetBucketlistsService) { }
   ngOnInit() {
+    this.fetchItems();
+  }
+
+  fetchItems(){
+    if (this.itemsBucketlist != ""){
+      this.http.get(`http://localhost:5000/api/V1/bucketlists/${this.itemsBucketlist}/items`, {headers: this.fetch.headers })
+      .subscribe(data => {let response = data.json();
+      this.itemsArray =  response.Items; console.log(this.itemsArray);} )
+    }
 
   }
+ngOnChanges(changes: SimpleChanges){
+  this.itemsBucketlist = changes.bucketlist_id.currentValue;
+  this.fetchItems();
+}
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { GetBucketlistsService } from '../get-bucketlists.service';
 import { Router } from '@angular/router';
 import { Http } from '@angular/http';
@@ -9,7 +9,8 @@ import { faderAnimation } from '../fader';
   selector: 'app-bucketlist',
   templateUrl: './bucketlist.component.html',
   styleUrls: ['./bucketlist.component.css'],
-  animations: [ faderAnimation ]
+  animations: [ faderAnimation ],
+  encapsulation: ViewEncapsulation.None
 })
 export class BucketlistComponent implements OnInit {
 
@@ -17,13 +18,14 @@ export class BucketlistComponent implements OnInit {
   response: any = '';
   bucketlists: any = '';
   fade:string = 'in';
+  q:string;
   edited_name:string;
+  new_add: string = '';
 
-  duplicate_edit_name:boolean = false;
-  successful_edit:boolean = false;
+  duplicate_name:boolean = false;
+  successful_name:boolean = false;
 
   @Input() bucketlist;
-  @Input() q;
   @Output() onClickItem = new EventEmitter();
 
   constructor(private fetch: GetBucketlistsService, private http: Http, private router: Router) {
@@ -43,6 +45,12 @@ export class BucketlistComponent implements OnInit {
     );
   }
 
+  search(eventData: any) {
+    this.q = eventData.target.value;
+    this.getBucketlists();
+
+  }
+
   next() {
     this.offset += 1;
     this.getBucketlists();
@@ -53,7 +61,16 @@ export class BucketlistComponent implements OnInit {
     this.getBucketlists();
   }
 
+  add(event) {
+    let body = new FormData();
+    body.set('name', this.new_add);
+
+    this.http.post('http://localhost:5000/api/V1/bucketlists', body, { headers: this.fetch.headers })
+             .subscribe(data => this.validate(data), err => this.validate(err));
+    }
+
   getItems(event){
+    console.log(event);
     this.onClickItem.emit(event);
   }
   deleteBucketlist(event){
@@ -76,15 +93,15 @@ export class BucketlistComponent implements OnInit {
     let response_code = response.status;
 
     if (response_code == 409) {
-      this.duplicate_edit_name = true;
+      this.duplicate_name = true;
       let self = this;
-      setTimeout(function() { self.duplicate_edit_name = false; }, 2000);
+      setTimeout(function() { self.duplicate_name = false; }, 2000);
     }
 
     if (response_code == 200){
-      this.successful_edit = true;
+      this.successful_name = true;
       let self = this;
-      setTimeout(function() { self.successful_edit = false;
+      setTimeout(function() { self.successful_name = false;
                               self.getBucketlists();
                               self.edited_name = '';}, 2000);
     }

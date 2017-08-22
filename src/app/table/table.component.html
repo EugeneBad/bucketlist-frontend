@@ -8,13 +8,13 @@
   <tbody>
     <tr *ngFor="let item of itemsArray">
       <td>
-        <button><span class="glyphicon glyphicon-edit"></span></button>
+        <button class="btn"><span class="glyphicon glyphicon-edit"></span></button>
         &nbsp;
-        <button><span class="glyphicon glyphicon-trash"></span></button>
+        <button class="btn"><span class="glyphicon glyphicon-trash"></span></button>
         &nbsp;
         {{ item.name }}
       </td>
-      <td>{{ item.creation_date | date:'fullDate' }}</td>
+      <td>{{ item.date_created | date:'fullDate' }}</td>
     </tr>
   </tbody>
 </table>
