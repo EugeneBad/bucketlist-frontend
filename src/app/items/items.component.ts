@@ -16,7 +16,8 @@ export class ItemsComponent implements OnInit {
    backgroundColor: ['green', 'gold']}];
 
   itemsBucketlist: string = "";
-  itemsArray:any = "";
+  completedItems:any = [];
+  pendingItems:any = [];
   bucketlistName:string;
 
 
@@ -31,7 +32,14 @@ export class ItemsComponent implements OnInit {
     if (this.itemsBucketlist != ""){
       this.http.get(`http://localhost:5000/api/V1/bucketlists/${this.itemsBucketlist}/items`, {headers: this.fetch.headers })
       .subscribe(data => {let response = data.json();
-      this.itemsArray =  response.Items;
+        for (let item of response.Items){
+          if (item.done){
+            this.completedItems.push(item);
+          }
+          if (!item.done){
+            this.pendingItems.push(item);
+          }
+        }
       this.bucketlistName = response.bucketlist_name;} )
     }
 

@@ -8,10 +8,10 @@
         <ng-template md-tab-label>
           <span>Pending Items</span>
         </ng-template>
-        <app-table [itemsArray]="itemsArray"></app-table>
+        <app-table [itemsArray]="pendingItems"></app-table>
       </md-tab>
       <md-tab label="Completed Items">
-      <app-table [itemsArray]="itemsArray"></app-table>
+      <app-table [itemsArray]="completedItems"></app-table>
       </md-tab>
     </md-tab-group>
 
