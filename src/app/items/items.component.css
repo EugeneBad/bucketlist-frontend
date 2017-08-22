@@ -4,3 +4,7 @@
   background-color: lightgrey;
 
 }
+
+canvas{
+  opacity: 0.6;
+}

@@ -17,10 +17,10 @@ export class ItemsComponent implements OnInit {
 
   itemsBucketlist: string = "";
   itemsArray:any = "";
+  bucketlistName:string;
 
 
   @Input () bucketlist_id;
-  @Input () q;
 
   constructor(private http: Http, private fetch: GetBucketlistsService) { }
   ngOnInit() {
@@ -31,7 +31,8 @@ export class ItemsComponent implements OnInit {
     if (this.itemsBucketlist != ""){
       this.http.get(`http://localhost:5000/api/V1/bucketlists/${this.itemsBucketlist}/items`, {headers: this.fetch.headers })
       .subscribe(data => {let response = data.json();
-      this.itemsArray =  response.Items; console.log(this.itemsArray);} )
+      this.itemsArray =  response.Items;
+      this.bucketlistName = response.bucketlist_name;} )
     }
 
   }
