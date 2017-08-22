@@ -10,10 +10,10 @@ import { GetBucketlistsService } from '../get-bucketlists.service';
 })
 export class ItemsComponent implements OnInit {
   public pieChartLabels:string[] = ['Completed', 'Pending'];
-  public pieChartData:number[] = [3, 5];
+  public pieChartData:any[];
   public pieChartType:string = 'doughnut';
   public pieChartColors: Array < any > = [{
-   backgroundColor: ['green', 'gold']}];
+   backgroundColor: ['green', 'goldenrod']}];
 
   itemsBucketlist: string = "";
   completedItems:any = [];

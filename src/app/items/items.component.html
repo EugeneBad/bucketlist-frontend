@@ -18,16 +18,15 @@
   </div>
 
 <div class="col-md-5" style="height: 460px;">
-  <h2 style="text-align:center; text-decoration:underline">Stats</h2>
+  <h2 style="text-align:center; text-decoration:underline">Statistics</h2>
   <div>
   <canvas baseChart
-              [data]="pieChartData"
+              [data]="[ completedItems.length, pendingItems.length ]"
               [labels]="pieChartLabels"
               [chartType]="pieChartType"
               [colors]="pieChartColors"
   width="400" height="330"></canvas>
 </div>
 </div>
-
 
 </div>

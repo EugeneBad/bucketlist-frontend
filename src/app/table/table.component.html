@@ -3,18 +3,20 @@
     <tr>
       <th>Name</th>
       <th>Date Added</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let item of itemsArray">
       <td>
-        <button class="btn"><span class="glyphicon glyphicon-edit"></span></button>
-        &nbsp;
-        <button class="btn"><span class="glyphicon glyphicon-trash"></span></button>
-        &nbsp;
         {{ item.name }}
       </td>
       <td>{{ item.date_created | date:'fullDate' }}</td>
+      <td>
+        <button class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span></button>
+        &nbsp;
+        <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+      </td>
     </tr>
   </tbody>
 </table>
