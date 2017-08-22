@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
-import { GetBucketlistsService } from '../get-bucketlists.service';
 import { faderAnimation } from '../fader';
 
 @Component({
@@ -20,7 +19,7 @@ export class DashboardComponent implements OnInit {
   hideBucketlists: boolean;
   hideItems: boolean;
 
-  constructor(private http: Http, private fetch: GetBucketlistsService) {
+  constructor(private http: Http) {
     this.hideBucketlists = false;
     this.hideItems = true;
     this.loadItems = 'out';

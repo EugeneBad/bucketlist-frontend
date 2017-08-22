@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, ViewEncapsulation, OnChanges, SimpleChanges } from '@angular/core';
-import { Http } from '@angular/http';
-import { GetBucketlistsService } from '../get-bucketlists.service';
+import { Http, Headers } from '@angular/http';
 
 @Component({
   selector: 'app-items',
@@ -20,17 +19,21 @@ export class ItemsComponent implements OnInit {
   pendingItems:any = [];
   bucketlistName:string;
 
+  header = new Headers();
+
 
   @Input () bucketlist_id;
 
-  constructor(private http: Http, private fetch: GetBucketlistsService) { }
+  constructor(private http: Http) { }
   ngOnInit() {
+    this.header.append('token', sessionStorage.getItem('token'));
+
     this.fetchItems();
   }
 
   fetchItems(){
     if (this.itemsBucketlist != ""){
-      this.http.get(`http://localhost:5000/api/V1/bucketlists/${this.itemsBucketlist}/items`, {headers: this.fetch.headers })
+      this.http.get(`http://localhost:5000/api/V1/bucketlists/${this.itemsBucketlist}/items`, {headers: this.header })
       .subscribe(data => {let response = data.json();
         for (let item of response.Items){
           if (item.done){

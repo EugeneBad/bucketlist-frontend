@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Http } from '@angular/http';
 import { CanActivate, Router } from '@angular/router';
-import { GetBucketlistsService } from '../get-bucketlists.service';
 import { LoggedInGuard } from '../logged-in.guard';
 
 @Component({
@@ -57,6 +56,7 @@ export class AuthComponent implements OnInit {
     let body = new FormData();
     body.append('username', this.username);
     body.append('password', this.password);
+    sessionStorage.clear();
     this.http.post('http://localhost:5000/api/V1/auth/login', body)
       .subscribe(data => this.authenticate(data), err => this.authenticate(err));
 
@@ -80,9 +80,10 @@ export class AuthComponent implements OnInit {
     }
 
     if (response_code == 200 || response_code == 201) {
-      this.auth.status = true;
+
       let token = JSON.parse(response._body).auth_token;
       sessionStorage.setItem('token', token);
+      this.auth.status = true;
 
       this.router.navigate(['/dashboard']);
     }

@@ -11,7 +11,6 @@ import { DatePipe } from '@angular/common';
 import { ItemsComponent } from './items/items.component';
 import { BucketlistComponent } from './bucketlist/bucketlist.component';
 import { LoggedInGuard } from './logged-in.guard';
-import { GetBucketlistsService } from './get-bucketlists.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdMenuModule } from '@angular/material';
 import { MdTabsModule } from '@angular/material';
@@ -50,7 +49,7 @@ const appRoutes: Routes = [
     ChartsModule
 
   ],
-  providers: [DatePipe, GetBucketlistsService, LoggedInGuard],
+  providers: [DatePipe, LoggedInGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

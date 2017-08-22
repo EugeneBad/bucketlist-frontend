@@ -1,9 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
-import { GetBucketlistsService } from '../get-bucketlists.service';
 import { Router } from '@angular/router';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import { faderAnimation } from '../fader';
-
 
 @Component({
   selector: 'app-bucketlist',
@@ -18,9 +16,11 @@ export class BucketlistComponent implements OnInit {
   response: any = '';
   bucketlists: any = '';
   fade:string = 'in';
-  q:string;
+  q:string = "";
   edited_name:string;
   new_add: string = '';
+
+  header = new Headers();
 
   duplicate_name:boolean = false;
   successful_name:boolean = false;
@@ -28,16 +28,18 @@ export class BucketlistComponent implements OnInit {
   @Input() bucketlist;
   @Output() onClickItem = new EventEmitter();
 
-  constructor(private fetch: GetBucketlistsService, private http: Http, private router: Router) {
-    this.getBucketlists();
+  constructor(private http: Http, private router: Router) {
+
   }
 
   ngOnInit() {
+    this.header.append('token', sessionStorage.getItem('token'));
+    this.getBucketlists();
   }
 
   getBucketlists() {
-
-    this.fetch.fetchBucketlists(this.offset, this.q).subscribe(data => {
+    this.http.get(`http://localhost:5000/api/V1/bucketlists?limit=4&offset=${this.offset}&q=${this.q}`, { headers: this.header })
+    .subscribe(data => {
       this.response = data.json();
       this.bucketlists =  this.response.Bucketlists;
     },
@@ -65,7 +67,7 @@ export class BucketlistComponent implements OnInit {
     let body = new FormData();
     body.set('name', this.new_add);
 
-    this.http.post('http://localhost:5000/api/V1/bucketlists', body, { headers: this.fetch.headers })
+    this.http.post('http://localhost:5000/api/V1/bucketlists', body, { headers: this.header })
              .subscribe(data => this.validate(data), err => this.validate(err));
     }
 
@@ -75,7 +77,7 @@ export class BucketlistComponent implements OnInit {
   }
   deleteBucketlist(event){
     let bucketlistId = event.target.id.split('_')[2];
-    this.http.delete(`http://localhost:5000/api/V1/bucketlists/${bucketlistId}`,{headers: this.fetch.headers})
+    this.http.delete(`http://localhost:5000/api/V1/bucketlists/${bucketlistId}`,{headers: this.header})
     .subscribe(data => this.getBucketlists());
   }
   editBucketlist(event){
@@ -85,7 +87,7 @@ export class BucketlistComponent implements OnInit {
     body.set('name', this.edited_name);
     console.log(bucketlistId);
 
-      this.http.put(`http://localhost:5000/api/V1/bucketlists/${bucketlistId}`, body, { headers: this.fetch.headers })
+      this.http.put(`http://localhost:5000/api/V1/bucketlists/${bucketlistId}`, body, { headers: this.header })
         .subscribe(data => this.validate(data), err => this.validate(err));
 
   }
