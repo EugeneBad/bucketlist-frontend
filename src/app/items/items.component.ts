@@ -21,6 +21,9 @@ export class ItemsComponent implements OnInit {
 
   header = new Headers();
 
+  new_add:string = "";
+  duplicate_name:boolean;
+  successful_name:boolean;
 
   @Input () bucketlist_id;
 
@@ -58,4 +61,31 @@ refresh(){
   this.fetchItems();
 }
 
+add(){
+  let body =new FormData();
+  if (this.new_add != ""){
+    body.set('name', this.new_add);
+  }
+  this.http.post(`http://localhost:5000/api/V1/bucketlists/${this.bucketlist_id}/items`, body, { headers: this.header })
+  .subscribe(data => this.validate(data), err => this.validate(err));
+
+}
+
+validate(response){
+  let response_code = response.status;
+
+  if (response_code == 409) {
+    this.duplicate_name = true;
+    let self = this;
+    setTimeout(function() { self.duplicate_name = false; }, 2000);
+    }
+
+  if (response_code == 200){
+    this.successful_name = true;
+    let self = this;
+    setTimeout(function() { self.successful_name = false;
+                            self.new_add = "";
+                            self.refresh()}, 1000);
+   }
+  }
 }
