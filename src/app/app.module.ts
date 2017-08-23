@@ -12,9 +12,7 @@ import { ItemsComponent } from './items/items.component';
 import { BucketlistComponent } from './bucketlist/bucketlist.component';
 import { LoggedInGuard } from './logged-in.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdMenuModule } from '@angular/material';
-import { MdTabsModule } from '@angular/material';
-import { MdGridListModule } from '@angular/material';
+import { MdMenuModule, MdGridListModule, MdTabsModule } from '@angular/material';
 import { ChartsModule } from 'ng2-charts';
 import { TableComponent } from './table/table.component';
 

@@ -13,7 +13,7 @@
       </td>
       <td>{{ item.date_created | date:'fullDate' }}</td>
       <td>
-        <button class="btn btn-warning edit_delete_btn" [mdMenuTriggerFor]="nameEdit"><span class="glyphicon glyphicon-edit"></span></button> &nbsp;
+        <button class="btn edit_delete_btn" [mdMenuTriggerFor]="nameEdit"><span class="glyphicon glyphicon-edit"></span></button> &nbsp;
         <md-menu #nameEdit="mdMenu">
 
           <input *ngIf="item.done == true" id="done_checkbox_{{ item.id }}" class="form-check-input" type="checkbox" checked style="margin-left: 1.7vw;" (click)="$event.stopPropagation()">
@@ -28,7 +28,7 @@
 
         </md-menu>
 
-        <button class="btn btn-danger edit_delete_btn" [mdMenuTriggerFor]="itemDelete"><span class="glyphicon glyphicon-trash"></span></button>
+        <button class="btn edit_delete_btn" [mdMenuTriggerFor]="itemDelete"><span class="glyphicon glyphicon-trash"></span></button>
         <md-menu #itemDelete="mdMenu">
           <button id="delete_btn_{{ item.id }}" class="btn btn-danger delete_btn" (click)="$event.stopPropagation()" (click)="deleteItem($event)">
             Delete this item.

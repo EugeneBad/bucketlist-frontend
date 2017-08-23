@@ -4,10 +4,7 @@
   <div class="col-md-7" style="height: 460px; border-style: solid; border-width:0px 2px 0px 0px">
 
     <md-tab-group md-stretch-tabs [selectedIndex]="0">
-      <md-tab >
-        <ng-template md-tab-label>
-          <span>Pending Items</span>
-        </ng-template>
+      <md-tab label="Pending Items">
         <app-table (onUpdate)="refresh()" [bucketlist_id]="bucketlist_id" [itemsArray]="pendingItems"></app-table>
       </md-tab>
       <md-tab label="Completed Items">
