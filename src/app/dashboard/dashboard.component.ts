@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Http } from '@angular/http';
+import { Router } from '@angular/router';
 import { faderAnimation } from '../fader';
 import { BucketlistComponent } from '../bucketlist/bucketlist.component';
 
@@ -24,7 +25,7 @@ export class DashboardComponent implements OnInit {
   @ViewChild(BucketlistComponent)
   private bucketlistComponent: BucketlistComponent;
 
-  constructor(private http: Http ) {
+  constructor(private http: Http, private router: Router ) {
     this.hideBucketlists = false;
     this.hideItems = true;
     this.loadItems = 'out';
@@ -66,5 +67,10 @@ export class DashboardComponent implements OnInit {
 
     this.bucketlistComponent.getBucketlists();
     this.loadItems = 'out';
+  }
+
+  logout(){
+    sessionStorage.clear();
+    this.router.navigate(['/home']);
   }
 }
