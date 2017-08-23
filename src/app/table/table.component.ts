@@ -49,8 +49,10 @@ validate(response){
   }
 }
 
-deleteItem(){
-
+deleteItem(event){
+  let item_id = event.target.id.split('_')[2];
+  this.http.delete(`http://localhost:5000/api/V1/bucketlists/${this.bucketlist_id}/items/${item_id}`, {headers: this.headers })
+  .subscribe(data => this.onUpdate.emit());
 }
 
 
