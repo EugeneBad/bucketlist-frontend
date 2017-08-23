@@ -1,3 +1,10 @@
+#back_btn{
+  background-color: darkgrey;
+  margin-left: 2vw;
+  opacity: 0;
+  color: white;
+}
+
 #logout_btn {
   margin-left: 24vw;
 }
