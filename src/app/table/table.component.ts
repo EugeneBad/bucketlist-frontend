@@ -15,6 +15,7 @@ export class TableComponent implements OnInit {
 
   @Input() itemsArray;
   @Input() bucketlist_id;
+  @Output() onUpdate = new EventEmitter();
 
   constructor(private http: Http) { }
 
@@ -43,7 +44,8 @@ validate(response){
     this.successful_name = true;
     let self = this;
     setTimeout(function() { self.successful_name = false;
-                            self.edited_name = '';}, 2000);
+                            self.edited_name = '';
+                            self.onUpdate.emit()}, 2000);
   }
 }
 

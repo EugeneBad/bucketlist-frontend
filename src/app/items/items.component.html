@@ -8,10 +8,10 @@
         <ng-template md-tab-label>
           <span>Pending Items</span>
         </ng-template>
-        <app-table [bucketlist_id]="bucketlist_id" [itemsArray]="pendingItems"></app-table>
+        <app-table (onUpdate)="refresh()" [bucketlist_id]="bucketlist_id" [itemsArray]="pendingItems"></app-table>
       </md-tab>
       <md-tab label="Completed Items">
-      <app-table [bucketlist_id]="bucketlist_id" [itemsArray]="completedItems"></app-table>
+      <app-table (onUpdate)="refresh()" [bucketlist_id]="bucketlist_id" [itemsArray]="completedItems"></app-table>
       </md-tab>
     </md-tab-group>
 

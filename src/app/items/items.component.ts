@@ -52,4 +52,10 @@ ngOnChanges(changes: SimpleChanges){
   this.fetchItems();
 }
 
+refresh(){
+  this.completedItems = [];
+  this.pendingItems = [];
+  this.fetchItems();
+}
+
 }
