@@ -19,11 +19,17 @@ import { TableComponent } from './table/table.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [LoggedInGuard],
+  {path: 'dashboard',
+   component: DashboardComponent,
+   canActivate: [LoggedInGuard],
   },
+  { path: '',
+    redirectTo:'dashboard',
+    pathMatch: 'full'},
+
+  { path: '**',
+  redirectTo:'home',
+  pathMatch: 'full'}
 ]
 
 @NgModule({
