@@ -17,9 +17,10 @@ input{
 }
 
 button{
+  color: white;
   margin-top: 3vh;
   font-weight: bold;
-  background-color: red;
+  background-color: darkcyan;
   width: 15vw;
   box-shadow: 2px 0px 3px;
 

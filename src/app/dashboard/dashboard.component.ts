@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Http } from '@angular/http';
 import { faderAnimation } from '../fader';
+import { BucketlistComponent } from '../bucketlist/bucketlist.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,6 +12,7 @@ import { faderAnimation } from '../fader';
 export class DashboardComponent implements OnInit {
   // Variables to control the querying of bucketlists/items.
 
+
   requested_bucketlist: string = "";
 
   // Variables to control transitions between bucketlists and items.
@@ -19,7 +21,10 @@ export class DashboardComponent implements OnInit {
   hideBucketlists: boolean;
   hideItems: boolean;
 
-  constructor(private http: Http) {
+  @ViewChild(BucketlistComponent)
+  private bucketlistComponent: BucketlistComponent;
+
+  constructor(private http: Http ) {
     this.hideBucketlists = false;
     this.hideItems = true;
     this.loadItems = 'out';
@@ -38,7 +43,6 @@ export class DashboardComponent implements OnInit {
       this.loadItems = 'in';
       this.loadBucketlists = '';
     }
-    console.log(event);
   }
 
   // Callback function called at the end of id=items div transition from
@@ -55,11 +59,12 @@ export class DashboardComponent implements OnInit {
   toggleLoadItems(event) {
 
     this.requested_bucketlist = event.target.id.split('_')[2];
-    console.log(this.requested_bucketlist);
     this.loadBucketlists = 'out';
   }
 
   toggleLoadBucketlists() {
+
+    this.bucketlistComponent.getBucketlists();
     this.loadItems = 'out';
   }
 }
