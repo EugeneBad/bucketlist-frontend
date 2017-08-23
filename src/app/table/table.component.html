@@ -13,9 +13,25 @@
       </td>
       <td>{{ item.date_created | date:'fullDate' }}</td>
       <td>
-        <button class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span></button>
+        <button class="btn btn-warning edit_delete_btn" [mdMenuTriggerFor]="nameEdit" ><span class="glyphicon glyphicon-edit"></span></button>
         &nbsp;
-        <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+        <md-menu #nameEdit="mdMenu">
+          <input id="edit_item_name" (click)="$event.stopPropagation()" class="form-control" placeholder="{{ item.name }}" maxlength="20"  [(ngModel)]="edited_name"/>
+
+          <div id="edit_validation" style="text-align: center;">
+            <span *ngIf="duplicate_name" class="alert alert-danger">Item name already exists</span>
+            <span *ngIf="successful_name" class="alert alert-success">Item successfully updated!</span>
+          </div>
+
+          <button id="edit_btn_{{ bucketlist_id }}" class="btn btn-success edit_submit" (click)="$event.stopPropagation()" (click)="editItem($event)">Edit</button>
+        </md-menu>
+
+        <button class="btn btn-danger edit_delete_btn" [mdMenuTriggerFor]="itemDelete"><span class="glyphicon glyphicon-trash"></span></button>
+        <md-menu #itemDelete="mdMenu">
+          <button id="delete_btn_{{ bucketlist_id }}" class="btn btn-danger delete_btn" (click)="$event.stopPropagation()" (click)="deleteItem($event)">
+            Delete this item.
+          </button>
+        </md-menu>
       </td>
     </tr>
   </tbody>

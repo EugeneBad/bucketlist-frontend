@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { GetBucketlistsService } from './get-bucketlists.service';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
