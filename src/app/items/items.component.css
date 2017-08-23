@@ -1,8 +1,14 @@
+.col-md-7{
+  height: 460px;
+  border-style: solid;
+  border-width:0px 2px 0px 0px;
+  overflow: scroll;
+}
+
 .mat-tab-label{
 
   color: black;
   background-color: lightgrey;
-
 }
 
 canvas{

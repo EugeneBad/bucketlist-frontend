@@ -49,7 +49,7 @@ validate(response){
     let self = this;
     setTimeout(function() { self.successful_name = false;
                             self.edited_name = '';
-                            self.onUpdate.emit()}, 2000);
+                            self.onUpdate.emit()}, 1000);
   }
 }
 
