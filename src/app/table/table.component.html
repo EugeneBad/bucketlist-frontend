@@ -16,6 +16,7 @@
         <button class="btn btn-warning edit_delete_btn" [mdMenuTriggerFor]="nameEdit"><span class="glyphicon glyphicon-edit"></span></button> &nbsp;
         <md-menu #nameEdit="mdMenu">
 
+          <input class="form-check-input" type="checkbox" [(ngModel)]="edit_done" style="margin-left: 1.7vw;" (click)="$event.stopPropagation()"> Done
           <input id="edit_item_name" (click)="$event.stopPropagation()" class="form-control" placeholder="{{ item.name }}" maxlength="20" [(ngModel)]="edited_name" />
           <div id="edit_validation" style="text-align: center;">
             <span *ngIf="duplicate_name" class="alert alert-danger">Item name already exists</span>
