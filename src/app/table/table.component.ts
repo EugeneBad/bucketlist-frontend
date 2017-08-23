@@ -9,7 +9,6 @@ import { Http, Headers } from '@angular/http';
 export class TableComponent implements OnInit {
 
   headers = new Headers();
-  edit_done:string;
   edited_name:string = "";
   duplicate_name:boolean;
   successful_name:boolean;
@@ -25,12 +24,14 @@ export class TableComponent implements OnInit {
   }
 
 editItem(event){
+  let item_id = event.target.id.split('_')[2];
   let body = new FormData();
   if (this.edited_name != ""){
     body.set('name', this.edited_name);
   }
-  body.set('done', this.edit_done);
-  let item_id = event.target.id.split('_')[2];
+  let completionStatus = (<HTMLInputElement>document.getElementById(`done_checkbox_${item_id}`)).checked;
+  body.set('done', String(completionStatus));
+
   this.http.put(`http://localhost:5000/api/V1/bucketlists/${this.bucketlist_id}/items/${item_id}`, body, {headers: this.headers })
   .subscribe(data => this.validate(data), err => this.validate(err));
 }
