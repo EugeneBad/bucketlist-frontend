@@ -25,8 +25,6 @@ export class ItemsComponent implements OnInit {
   duplicate_name:boolean;
   successful_name:boolean;
 
-  @Input () bucketlist_id;
-
   constructor(private http: Http) { }
   ngOnInit() {
     this.header.append('token', sessionStorage.getItem('token'));
@@ -50,10 +48,6 @@ export class ItemsComponent implements OnInit {
     }
 
   }
-ngOnChanges(changes: SimpleChanges){
-  this.itemsBucketlist = changes.bucketlist_id.currentValue;
-  this.fetchItems();
-}
 
 refresh(){
   this.completedItems = [];
@@ -66,7 +60,7 @@ add(){
   if (this.new_add != ""){
     body.set('name', this.new_add);
   }
-  this.http.post(`http://localhost:5000/api/V1/bucketlists/${this.bucketlist_id}/items`, body, { headers: this.header })
+  this.http.post(`http://localhost:5000/api/V1/bucketlists/${this.itemsBucketlist}/items`, body, { headers: this.header })
   .subscribe(data => this.validate(data), err => this.validate(err));
 
 }

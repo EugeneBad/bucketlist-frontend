@@ -5,10 +5,11 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class LoggedInGuard implements CanActivate {
+  // The status variable is set from the auth component
+  // when login/signup is successful.
   status: boolean;
-  constructor(private router: Router) {
 
-  }
+  constructor(private router: Router) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,

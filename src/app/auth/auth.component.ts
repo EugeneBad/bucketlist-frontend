@@ -10,14 +10,18 @@ import { LoggedInGuard } from '../logged-in.guard';
 })
 export class AuthComponent implements OnInit {
 
+  // Property bound by the parent home component
+  // to indicate the form currently being filled.
   @Input() btn_actn;
 
+  // Passed to component logic via two way binding in view.
   username: string;
   password: string;
+
+  // Determine the validation to be displayed.
   missing_details: boolean;
   duplicate_username: boolean;
   wrong_details: boolean;
-
 
   constructor(private http: Http, private router: Router, private auth: LoggedInGuard) {
     this.reset();
@@ -33,6 +37,7 @@ export class AuthComponent implements OnInit {
     this.wrong_details = false;
   }
 
+  // Callback when submit button clicked; calls the login or join method.
   btnAction() {
     if (this.btn_actn == 'JOIN') {
       this.join();
@@ -44,19 +49,22 @@ export class AuthComponent implements OnInit {
   }
 
   join() {
+    // Obtain the username and password and set it as form data.
     let body = new FormData();
     body.append('username', this.username);
     body.append('password', this.password);
+
+    // Send data to endpoint via post request.
     this.http.post('http://localhost:5000/api/V1/auth/register', body)
       .subscribe(data => this.authenticate(data), err => this.authenticate(err));
-
-
   }
   login() {
+    // Obtain the username and password and set it as form data.
     let body = new FormData();
     body.append('username', this.username);
     body.append('password', this.password);
     sessionStorage.clear();
+    // Send data to endpoint via post request.
     this.http.post('http://localhost:5000/api/V1/auth/login', body)
       .subscribe(data => this.authenticate(data), err => this.authenticate(err));
 
@@ -80,11 +88,11 @@ export class AuthComponent implements OnInit {
     }
 
     if (response_code == 200 || response_code == 201) {
-
+      //Obtain token and store it in the browser.
       let token = JSON.parse(response._body).auth_token;
       sessionStorage.setItem('token', token);
       this.auth.status = true;
-
+      // Redirect to the dashboard route.
       this.router.navigate(['/dashboard']);
     }
 

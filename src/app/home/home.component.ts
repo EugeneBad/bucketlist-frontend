@@ -6,11 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  btn_actn:string;
-  show_signup_form:boolean
-  show_login_form:boolean
-  show_signup_btn:boolean
-  show_login_btn:boolean
+
+  // Variables to toggle visibility of login/signup form.
+  btn_actn: string;
+  show_signup_form: boolean
+  show_login_form: boolean
+  show_signup_btn: boolean
+  show_login_btn: boolean
 
   constructor() {
     this.reset();
@@ -19,14 +21,16 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-reset(){
-  this.show_signup_form = false;
-  this.show_login_form= false;
-  this.show_signup_btn= true;
-  this.show_login_btn= true;
-}
+  // Hide login and signup forms.
+  reset() {
+    this.show_signup_form = false;
+    this.show_login_form = false;
+    this.show_signup_btn = true;
+    this.show_login_btn = true;
+  }
 
-  joinForm(){
+  // Display signup form.
+  joinForm() {
     this.reset();
     this.btn_actn = 'JOIN';
     this.show_signup_btn = false;
@@ -34,10 +38,11 @@ reset(){
 
   }
 
-  loginForm(){
+  // Display login form.
+  loginForm() {
     this.reset();
     this.btn_actn = 'LOGIN';
-    this.show_login_btn= false;
+    this.show_login_btn = false;
     this.show_login_form = true;
   }
 

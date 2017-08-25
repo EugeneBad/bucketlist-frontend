@@ -1,3 +1,4 @@
+<!-- Navigation bar. -->
 <nav class="navbar navbar-default">
   <button id="back_btn" class="btn" (click)="toggleLoadBucketlists()" [@fader]="loadItems">Back to Bucketlists</button>
   <span id="greeting_span">Welcome username!</span>
@@ -5,6 +6,8 @@
   Logout
   </button>
 </nav>
+
+<!-- Main div -->
 <div class="row">
   <div class="col-md-12">
 
@@ -13,7 +16,7 @@
     </div>
 
   <div id="items" (@fader.done)="showBucketlists($event)" [@fader]="loadItems" [ngClass]="{'hidden':hideItems}">
-    <app-items [bucketlist_id]="requested_bucketlist"></app-items>
+    <app-items></app-items>
   </div>
   </div>
 </div>

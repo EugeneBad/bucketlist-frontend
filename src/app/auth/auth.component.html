@@ -1,15 +1,18 @@
+<!-- Username input field -->
 <div class="row">
   <div id="username" class="col-md-10 col-md-push-1">
     <input class="form-control" type="text" placeholder="Username" [(ngModel)]="username" />
   </div>
 </div>
 
+<!-- Form validation notifications -->
 <div style="text-align: center;">
   <span *ngIf="missing_details" class="alert alert-danger">Both username and password required</span>
   <span *ngIf="duplicate_username" class="alert alert-danger">Username already exists</span>
   <span *ngIf="wrong_details" class="alert alert-danger">Check username and password</span>
 </div>
 
+<!-- Password input field -->
 <div class="row">
   <div id="password" class="col-md-10 col-md-push-1">
     <input class="form-control" type="password" placeholder="Password" [(ngModel)]="password" />

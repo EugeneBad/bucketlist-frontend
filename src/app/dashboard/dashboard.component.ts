@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { faderAnimation } from '../fader';
 import { BucketlistComponent } from '../bucketlist/bucketlist.component';
+import { ItemsComponent } from '../items/items.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,12 +12,8 @@ import { BucketlistComponent } from '../bucketlist/bucketlist.component';
   animations: [ faderAnimation ]
 })
 export class DashboardComponent implements OnInit {
-  // Variables to control the querying of bucketlists/items.
 
-
-  requested_bucketlist: string = "";
-
-  // Variables to control transitions between bucketlists and items.
+  // Variables to control transitions between bucketlists and items component.
   loadItems: string;
   loadBucketlists: string;
   hideBucketlists: boolean;
@@ -24,6 +21,9 @@ export class DashboardComponent implements OnInit {
 
   @ViewChild(BucketlistComponent)
   private bucketlistComponent: BucketlistComponent;
+
+  @ViewChild(ItemsComponent)
+  private itemsComponent: ItemsComponent;
 
   constructor(private http: Http, private router: Router ) {
     this.hideBucketlists = false;
@@ -35,7 +35,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
 
-  // Callback function called at the end of id=bucketlists div transition from
+  // Callback function called at the end of id="bucketlists" div transition from
   // in to out.
   showItems(event) {
     if (event.fromState == 'in' && event.toState == 'out') {
@@ -46,7 +46,7 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  // Callback function called at the end of id=items div transition from
+  // Callback function called at the end of id="items" div transition from
   // in to out.
   showBucketlists(event) {
     if (event.fromState == 'in' && event.toState == 'out') {
@@ -58,13 +58,14 @@ export class DashboardComponent implements OnInit {
   }
 
   toggleLoadItems(event) {
-
-    this.requested_bucketlist = event.target.id.split('_')[2];
+    // When transitioning to items component, set bucketlist id and refetch the items.
+    this.itemsComponent.itemsBucketlist = event.target.id.split('_')[2];
+    this.itemsComponent.refresh();
     this.loadBucketlists = 'out';
   }
 
   toggleLoadBucketlists() {
-
+    // When transitioning to bucketlists component,  refetch the bucketlists.
     this.bucketlistComponent.getBucketlists();
     this.loadItems = 'out';
   }

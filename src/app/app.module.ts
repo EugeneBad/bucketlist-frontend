@@ -1,35 +1,39 @@
+// Utility imports
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router'
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { AppComponent } from './app.component';
+import { DatePipe } from '@angular/common';
+import { NgModule } from '@angular/core';
+
+//Component imports
+import { BucketlistComponent } from './bucketlist/bucketlist.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ItemsComponent } from './items/items.component';
+import { TableComponent } from './table/table.component';
 import { HomeComponent } from './home/home.component';
 import { AuthComponent } from './auth/auth.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { DatePipe } from '@angular/common';
-import { ItemsComponent } from './items/items.component';
-import { BucketlistComponent } from './bucketlist/bucketlist.component';
-import { LoggedInGuard } from './logged-in.guard';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppComponent } from './app.component';
+
+// 
 import { MdMenuModule, MdGridListModule, MdTabsModule } from '@angular/material';
+import { LoggedInGuard } from './logged-in.guard';
 import { ChartsModule } from 'ng2-charts';
-import { TableComponent } from './table/table.component';
 
-
+// Application route definitions.
 const appRoutes: Routes = [
-  { path: 'home', component: HomeComponent },
-  {path: 'dashboard',
-   component: DashboardComponent,
-   canActivate: [LoggedInGuard],
-  },
+  { path: 'home',
+    component: HomeComponent },
+  { path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [LoggedInGuard], },
   { path: '',
     redirectTo:'dashboard',
-    pathMatch: 'full'},
-
+    pathMatch: 'full' },
   { path: '**',
-  redirectTo:'home',
-  pathMatch: 'full'}
+    redirectTo:'home',
+    pathMatch: 'full' }
 ]
 
 @NgModule({

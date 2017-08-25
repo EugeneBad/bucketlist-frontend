@@ -33,6 +33,7 @@ export class BucketlistComponent implements OnInit {
   }
 
   ngOnInit() {
+    // Initialise component with headers abd fetch the bucketlists.
     this.header.append('token', sessionStorage.getItem('token'));
     this.getBucketlists();
   }
@@ -43,21 +44,21 @@ export class BucketlistComponent implements OnInit {
       this.response = data.json();
       this.bucketlists =  this.response.Bucketlists;
     },
+      // In case of an error response (4xx), just redirect to login.
       err => this.router.navigate(['/home'])
     );
   }
-
+  // Callback for keyup event in the search box.
   search(eventData: any) {
     this.q = eventData.target.value;
     this.getBucketlists();
-
   }
-
+  // Callback for click event on next button.
   next() {
     this.offset += 1;
     this.getBucketlists();
   }
-
+  // Callback for click event on prev button.
   prev() {
     this.offset -= 1;
     this.getBucketlists();
@@ -72,25 +73,25 @@ export class BucketlistComponent implements OnInit {
     }
 
   getItems(event){
-    console.log(event);
     this.onClickItem.emit(event);
   }
+
   deleteBucketlist(event){
     let bucketlistId = event.target.id.split('_')[2];
     this.http.delete(`http://localhost:5000/api/V1/bucketlists/${bucketlistId}`,{headers: this.header})
     .subscribe(data => this.getBucketlists());
   }
+
   editBucketlist(event){
     let bucketlistId = event.target.id.split('_')[2];
 
     let body = new FormData();
     body.set('name', this.edited_name);
-    console.log(bucketlistId);
 
       this.http.put(`http://localhost:5000/api/V1/bucketlists/${bucketlistId}`, body, { headers: this.header })
         .subscribe(data => this.validate(data), err => this.validate(err));
-
   }
+
   validate(response){
     let response_code = response.status;
 
