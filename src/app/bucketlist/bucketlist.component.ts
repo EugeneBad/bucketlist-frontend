@@ -106,6 +106,7 @@ export class BucketlistComponent implements OnInit {
       let self = this;
       setTimeout(function() { self.successful_name = false;
                               self.getBucketlists();
+                              self.new_add = "";
                               self.edited_name = '';}, 2000);
     }
   }
