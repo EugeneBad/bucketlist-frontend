@@ -8,7 +8,7 @@ export class itemDeleteService {
   constructor(private http: Http) {}
 
   delete(bucketlist_id, item_id){
-    this.headers.append('token', sessionStorage.getItem('token'));
+    this.headers.set('token', sessionStorage.getItem('token'));
     return this.http.delete(`http://localhost:5000/api/V1/bucketlists/${bucketlist_id}/items/${item_id}`, {headers: this.headers })
   }
 

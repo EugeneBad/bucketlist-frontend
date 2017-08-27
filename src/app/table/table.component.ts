@@ -21,7 +21,7 @@ export class TableComponent implements OnInit {
   constructor(private editService: itemEditService, private deleteService: itemDeleteService) { }
 
   ngOnInit() {
-    this.headers.append('token', sessionStorage.getItem('token'));
+    this.headers.set('token', sessionStorage.getItem('token'));
   }
 
 editItem(event){

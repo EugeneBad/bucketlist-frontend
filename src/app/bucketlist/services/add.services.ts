@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 
 @Injectable()
-export class itemFetchService {
+export class bucketlistAddService {
   headers = new Headers();
   constructor(private http: Http) {}
 
-  fetch(itemsBucketlist){
+  add(body){
     this.headers.set('token', sessionStorage.getItem('token'));
-    return this.http.get(`http://localhost:5000/api/V1/bucketlists/${itemsBucketlist}/items`, { headers: this.headers })
+    return this.http.post('http://localhost:5000/api/V1/bucketlists', body, { headers: this.headers });
   }
 
 }

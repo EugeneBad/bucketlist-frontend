@@ -8,7 +8,7 @@ export class itemEditService {
   constructor(private http: Http) {}
 
   edit(bucketlist_id, item_id, body){
-    this.headers.append('token', sessionStorage.getItem('token'));
+    this.headers.set('token', sessionStorage.getItem('token'));
     return this.http.put(`http://localhost:5000/api/V1/bucketlists/${bucketlist_id}/items/${item_id}`, body, {headers: this.headers })
   }
 

@@ -21,6 +21,10 @@ import { itemEditService } from './table/services/edit.service';
 import { itemDeleteService } from './table/services/delete.service';
 import { itemAddService } from './items/services/add.service';
 import { itemFetchService } from './items/services/fetch.service';
+import { bucketlistFetchService } from './bucketlist/services/fetch.service';
+import { bucketlistAddService } from './bucketlist/services/add.services';
+import { bucketlistEditService } from './bucketlist/services/edit.service';
+import { bucketlistDeleteService } from './bucketlist/services/delete.service';
 
 //
 import { MdMenuModule, MdGridListModule, MdTabsModule } from '@angular/material';
@@ -69,7 +73,11 @@ const appRoutes: Routes = [
     itemEditService,
     itemDeleteService,
     itemAddService,
-    itemFetchService
+    itemFetchService,
+    bucketlistFetchService,
+    bucketlistAddService,
+    bucketlistEditService,
+    bucketlistDeleteService
   ],
   bootstrap: [AppComponent]
 })

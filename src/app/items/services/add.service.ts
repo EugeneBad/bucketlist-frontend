@@ -7,7 +7,7 @@ export class itemAddService {
   constructor(private http: Http) {}
 
   add(itemsBucketlist, body){
-    this.headers.append('token', sessionStorage.getItem('token'));
+    this.headers.set('token', sessionStorage.getItem('token'));
     return this.http.post(`http://localhost:5000/api/V1/bucketlists/${itemsBucketlist}/items`, body, { headers: this.headers })
   }
 
