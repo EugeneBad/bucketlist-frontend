@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { itemEditService } from './services/edit.service';
+import { itemDeleteService } from './services/delete.service';
 
 @Component({
   selector: 'app-table',
@@ -17,7 +18,7 @@ export class TableComponent implements OnInit {
   @Input() bucketlist_id;
   @Output() onUpdate = new EventEmitter();
 
-  constructor(private http: Http) { }
+  constructor(private editService: itemEditService, private deleteService: itemDeleteService) { }
 
   ngOnInit() {
     this.headers.append('token', sessionStorage.getItem('token'));
@@ -32,7 +33,7 @@ editItem(event){
   let completionStatus = (<HTMLInputElement>document.getElementById(`done_checkbox_${item_id}`)).checked;
   body.set('done', String(completionStatus));
 
-  this.http.put(`http://localhost:5000/api/V1/bucketlists/${this.bucketlist_id}/items/${item_id}`, body, {headers: this.headers })
+  this.editService.edit(this.bucketlist_id, item_id, body)
   .subscribe(data => this.validate(data), err => this.validate(err));
 }
 validate(response){
@@ -55,7 +56,7 @@ validate(response){
 
 deleteItem(event){
   let item_id = event.target.id.split('_')[2];
-  this.http.delete(`http://localhost:5000/api/V1/bucketlists/${this.bucketlist_id}/items/${item_id}`, {headers: this.headers })
+  this.deleteService.delete(this.bucketlist_id, item_id)
   .subscribe(data => this.onUpdate.emit());
 }
 

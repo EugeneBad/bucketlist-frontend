@@ -16,7 +16,11 @@ import { HomeComponent } from './home/home.component';
 import { AuthComponent } from './auth/auth.component';
 import { AppComponent } from './app.component';
 
-// 
+//Service imports
+import { itemEditService } from './table/services/edit.service';
+import { itemDeleteService } from './table/services/delete.service';
+
+//
 import { MdMenuModule, MdGridListModule, MdTabsModule } from '@angular/material';
 import { LoggedInGuard } from './logged-in.guard';
 import { ChartsModule } from 'ng2-charts';
@@ -57,7 +61,7 @@ const appRoutes: Routes = [
     ChartsModule
 
   ],
-  providers: [DatePipe, LoggedInGuard],
+  providers: [DatePipe, LoggedInGuard, itemEditService, itemDeleteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
