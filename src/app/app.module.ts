@@ -19,6 +19,8 @@ import { AppComponent } from './app.component';
 //Service imports
 import { itemEditService } from './table/services/edit.service';
 import { itemDeleteService } from './table/services/delete.service';
+import { itemAddService } from './items/services/add.service';
+import { itemFetchService } from './items/services/fetch.service';
 
 //
 import { MdMenuModule, MdGridListModule, MdTabsModule } from '@angular/material';
@@ -61,7 +63,14 @@ const appRoutes: Routes = [
     ChartsModule
 
   ],
-  providers: [DatePipe, LoggedInGuard, itemEditService, itemDeleteService],
+  providers: [
+    DatePipe,
+    LoggedInGuard,
+    itemEditService,
+    itemDeleteService,
+    itemAddService,
+    itemFetchService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

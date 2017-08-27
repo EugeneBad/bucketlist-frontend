@@ -1,5 +1,11 @@
-import { Component, OnInit, Input, ViewEncapsulation, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ViewEncapsulation,
+  OnChanges, SimpleChanges } from '@angular/core';
 import { itemAddService } from './services/add.service';
+import { itemFetchService } from './services/fetch.service';
 
 @Component({
   selector: 'app-items',
@@ -27,7 +33,7 @@ export class ItemsComponent implements OnInit {
   duplicate_name: boolean;
   successful_name: boolean;
 
-  constructor(private itemAddService: itemAddService) { }
+  constructor(private itemAddService: itemAddService, private itemFetchService: itemFetchService) { }
   ngOnInit() {
     this.header.append('token', sessionStorage.getItem('token'));
 
@@ -36,7 +42,7 @@ export class ItemsComponent implements OnInit {
 
   fetchItems() {
     if (this.itemsBucketlist != "") {
-      this.http.get(`http://localhost:5000/api/V1/bucketlists/${this.itemsBucketlist}/items`, { headers: this.header })
+      this.itemFetchService.fetch(this.itemsBucketlist)
         .subscribe(data => {
           let response = data.json();
           for (let item of response.Items) {
