@@ -8,7 +8,7 @@
         <app-table (onUpdate)="refresh()" [bucketlist_id]="itemsBucketlist" [itemsArray]="pendingItems"></app-table>
       </md-tab>
       <md-tab label="Completed Items">
-      <app-table (onUpdate)="refresh()" [bucketlist_id]="bucketlist_id" [itemsArray]="completedItems"></app-table>
+      <app-table (onUpdate)="refresh()" [bucketlist_id]="itemsBucketlist" [itemsArray]="completedItems"></app-table>
       </md-tab>
     </md-tab-group>
 

@@ -13,7 +13,7 @@
     <span *ngIf="successful_name" class="alert alert-success">New bucketlist added!</span>
   </div>
 
-  <button id="new_add_submit" class="btn btn-success" (click)="add()" (click)="$event.stopPropagation()">Add</button>
+  <button id="new_add_submit" class="btn btn-success" (click)="add($event)" (click)="$event.stopPropagation()">Add</button>
 
 </md-menu>
 
