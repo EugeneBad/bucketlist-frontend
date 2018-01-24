@@ -3,14 +3,14 @@
 <div class="row">
   <div class="col-md-7">
 
-    <md-tab-group md-stretch-tabs [selectedIndex]="0">
-      <md-tab label="Pending Items">
+    <mat-tab-group md-stretch-tabs [selectedIndex]="0">
+      <mat-tab label="Pending Items">
         <app-table (onUpdate)="refresh()" [bucketlist_id]="itemsBucketlist" [itemsArray]="pendingItems"></app-table>
-      </md-tab>
-      <md-tab label="Completed Items">
+      </mat-tab>
+      <mat-tab label="Completed Items">
       <app-table (onUpdate)="refresh()" [bucketlist_id]="itemsBucketlist" [itemsArray]="completedItems"></app-table>
-      </md-tab>
-    </md-tab-group>
+      </mat-tab>
+    </mat-tab-group>
 
   </div>
 
@@ -25,9 +25,9 @@
   width="400" height="300"></canvas>
 </div>
 </div>
-<button class="btn btn-primary" style="margin-top: -2.5vh; margin-left:1.2vw; margin-bottom: 1vh" [mdMenuTriggerFor]="newAdd">Add new item</button>
+<button class="btn btn-primary" style="margin-top: -2.5vh; margin-left:1.2vw; margin-bottom: 1vh" [matMenuTriggerFor]="newAdd">Add new item</button>
 
-<md-menu class="new_add_div" #newAdd="mdMenu">
+<mat-menu class="new_add_div" #newAdd="matMenu">
 
   <input id="new_add_name" (click)="$event.stopPropagation()" class="form-control" placeholder="New item..." maxlength="20" [(ngModel)]="new_add" />
 
@@ -38,5 +38,5 @@
 
   <button id="new_add_submit" class="btn btn-success" (click)="add()" (click)="$event.stopPropagation()">Add</button>
 
-</md-menu>
+</mat-menu>
 </div>

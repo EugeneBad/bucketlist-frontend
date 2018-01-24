@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Http } from '@angular/http';
 import { CanActivate, Router } from '@angular/router';
 import { LoggedInGuard } from '../logged-in.guard';
-
+import { base_url } from '../url';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -55,7 +55,7 @@ export class AuthComponent implements OnInit {
     body.append('password', this.password);
 
     // Send data to endpoint via post request.
-    this.http.post('http://localhost:5000/api/V1/auth/register', body)
+    this.http.post(`${base_url}/api/V1/auth/register`, body)
       .subscribe(data => this.authenticate(data), err => this.authenticate(err));
   }
   login() {
@@ -65,7 +65,7 @@ export class AuthComponent implements OnInit {
     body.append('password', this.password);
     sessionStorage.clear();
     // Send data to endpoint via post request.
-    this.http.post('http://localhost:5000/api/V1/auth/login', body)
+    this.http.post(`${base_url}/api/V1/auth/login`, body)
       .subscribe(data => this.authenticate(data), err => this.authenticate(err));
 
   }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
+import { base_url } from '../../url';
 
 @Injectable()
 export class bucketlistDeleteService {
@@ -8,7 +9,7 @@ export class bucketlistDeleteService {
 
   delete(bucketlistId){
     this.headers.set('token', sessionStorage.getItem('token'));
-    return this.http.delete(`http://localhost:5000/api/V1/bucketlists/${bucketlistId}`,{headers: this.headers});
+    return this.http.delete(`${base_url}/api/V1/bucketlists/${bucketlistId}`,{headers: this.headers});
   }
 
 }

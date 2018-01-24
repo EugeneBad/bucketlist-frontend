@@ -1,10 +1,10 @@
 <h1>Bucketlists</h1>
 <hr>
-<button id="new_add_btn" class="btn " [mdMenuTriggerFor]="newAdd" style="opacity:1;">
+<button id="new_add_btn" class="btn " [matMenuTriggerFor]="newAdd" style="opacity:1;">
   Add new bucketlist
 </button>
 
-<md-menu class="new_add_div" #newAdd="mdMenu">
+<mat-menu class="new_add_div" #newAdd="matMenu">
 
   <input id="new_add_name" (click)="$event.stopPropagation()" class="form-control" placeholder="New bucketlist..." maxlength="20" [(ngModel)]="new_add" />
 
@@ -15,7 +15,7 @@
 
   <button id="new_add_submit" class="btn btn-success" (click)="add($event)" (click)="$event.stopPropagation()">Add</button>
 
-</md-menu>
+</mat-menu>
 
 <input (keyup)="search($event)" id="search_box" type="text" class="form-control" placeholder="Look for bucketlist.." [(ngModel)]="q"/>
 
@@ -48,10 +48,10 @@
         <h4>Last modified: {{ bucketlist.date_modified | date:longDate }}</h4>
       </div>
 
-      <button class="btn btn-warning edit_del_btn" style="margin-top:0.2vw;" [mdMenuTriggerFor]="nameEdit">
+      <button class="btn btn-warning edit_del_btn" style="margin-top:0.2vw;" [matMenuTriggerFor]="nameEdit">
         <span class="glyphicon glyphicon-edit"></span>
       </button>
-      <md-menu #nameEdit="mdMenu">
+      <mat-menu #nameEdit="matMenu">
         <input id="edit_bcktlst_name" (click)="$event.stopPropagation()" class="form-control" placeholder="{{ bucketlist.name }}" maxlength="20"  [(ngModel)]="edited_name"/>
 
         <div id="edit_validation" style="text-align: center;">
@@ -60,17 +60,17 @@
         </div>
 
         <button id="edit_btn_{{ bucketlist.id }}" class="btn btn-success edit_submit" (click)="$event.stopPropagation()" (click)="editBucketlist($event)">Edit</button>
-      </md-menu>
+      </mat-menu>
 
-      <button  class="btn btn-danger edit_del_btn" style="margin-top:0.2vw" [mdMenuTriggerFor]="bucketlistDelete">
+      <button  class="btn btn-danger edit_del_btn" style="margin-top:0.2vw" [matMenuTriggerFor]="bucketlistDelete">
         <span class="glyphicon glyphicon-trash"></span>
       </button>
-      <md-menu #bucketlistDelete="mdMenu">
+      <mat-menu #bucketlistDelete="matMenu">
 
         <button id="delete_btn_{{ bucketlist.id }}" class="btn btn-danger delete_btn" (click)="$event.stopPropagation()" (click)="deleteBucketlist($event)">
           Delete this bucketlist
         </button>
-      </md-menu>
+      </mat-menu>
 
     </div>
 

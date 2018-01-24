@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
+import { base_url } from '../../url';
 
 @Injectable()
 export class itemFetchService {
@@ -8,7 +9,7 @@ export class itemFetchService {
 
   fetch(itemsBucketlist){
     this.headers.set('token', sessionStorage.getItem('token'));
-    return this.http.get(`http://localhost:5000/api/V1/bucketlists/${itemsBucketlist}/items`, { headers: this.headers })
+    return this.http.get(`${base_url}/api/V1/bucketlists/${itemsBucketlist}/items`, { headers: this.headers })
   }
 
 }

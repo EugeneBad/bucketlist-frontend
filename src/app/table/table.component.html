@@ -13,8 +13,8 @@
       </td>
       <td>{{ item.date_created | date:'fullDate' }}</td>
       <td>
-        <button class="btn edit_delete_btn" [mdMenuTriggerFor]="nameEdit"><span class="glyphicon glyphicon-edit"></span></button> &nbsp;
-        <md-menu #nameEdit="mdMenu">
+        <button class="btn edit_delete_btn" [matMenuTriggerFor]="nameEdit"><span class="glyphicon glyphicon-edit"></span></button> &nbsp;
+        <mat-menu #nameEdit="matMenu">
 
           <input *ngIf="item.done == true" id="done_checkbox_{{ item.id }}" class="form-check-input" type="checkbox" checked style="margin-left: 1.7vw;" (click)="$event.stopPropagation()">
           <input *ngIf="item.done == false" id="done_checkbox_{{ item.id }}" class="form-check-input" type="checkbox" style="margin-left: 1.7vw;" (click)="$event.stopPropagation()"> Done
@@ -26,14 +26,14 @@
           </div>
           <button id="edit_btn_{{ item.id }}" class="btn btn-success edit_submit" (click)="$event.stopPropagation()" (click)="editItem($event)">Edit</button>
 
-        </md-menu>
+        </mat-menu>
 
-        <button class="btn edit_delete_btn" [mdMenuTriggerFor]="itemDelete"><span class="glyphicon glyphicon-trash"></span></button>
-        <md-menu #itemDelete="mdMenu">
+        <button class="btn edit_delete_btn" [matMenuTriggerFor]="itemDelete"><span class="glyphicon glyphicon-trash"></span></button>
+        <mat-menu #itemDelete="matMenu">
           <button id="delete_btn_{{ item.id }}" class="btn btn-danger delete_btn" (click)="$event.stopPropagation()" (click)="deleteItem($event)">
             Delete this item.
           </button>
-        </md-menu>
+        </mat-menu>
       </td>
     </tr>
   </tbody>
